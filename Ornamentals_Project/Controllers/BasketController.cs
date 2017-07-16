@@ -13,18 +13,22 @@ namespace Ornamentals_Project.Controllers
         {
             return View();
         }
+        // GET: Checkout1
         public ActionResult Checkout1()
         {
             return View();
         }
+        // GET: Checkout2
         public ActionResult Checkout2()
         {
             return View();
         }
+        // GET: Checkout3
         public ActionResult Checkout3()
         {
             return View();
         }
+        // GET: Checkout4
         public ActionResult Checkout4()
         {
             return View();
