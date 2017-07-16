@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9c6449a7c564469fa742b6ab717a0184" Name="Diagram1">
+        <EntityTypeShape EntityType="Ornamentals_dbModel.Cliente" Width="1.5" PointX="3.375" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ornamentals_dbModel.Pedido" Width="1.5" PointX="6.625" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ornamentals_dbModel.PedidoDetalle" Width="1.5" PointX="6.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ornamentals_dbModel.Producto" Width="1.5" PointX="3.5" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ornamentals_dbModel.ProductoImagen" Width="1.5" PointX="0.5" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="Ornamentals_dbModel.FK__Pedido__ClienteI__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="Ornamentals_dbModel.FK__PedidoDet__Pedid__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="Ornamentals_dbModel.FK__PedidoDet__Produ__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="Ornamentals_dbModel.FK__ProductoI__Produ__286302EC" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,519 @@
+﻿@model List<Ornamentals_Project.Models.Producto>
+
+<!--STORE-->
+
+<div id="content">
+    <div class="container">
+
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index","Home")">Home</a>
+                </li>
+                <li>Tienda</li>
+            </ul>
+        </div>
+
+        <div class="col-md-3">
+            <!-- *** MENUS AND FILTERS ***
+            _________________________________________________________ -->
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Categorías</h3>
+                </div>
+
+                <div class="panel-body">
+                    <ul class="nav nav-pills nav-stacked category-menu">
+                        <li class="active">
+                            <a href="@Url.Action("Index", "Store")">Tipos de Plantas<span class="badge pull-right">42</span></a>
+                            <ul>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Árboles</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Hortalizas</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Flores</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Palmeras</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Arbustos</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Trepadoras</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Cáctus y Crasas</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Frutales</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Acuáticas</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="active">
+                            <a href="@Url.Action("Index", "Store")">Ambientes  <span class="badge pull-right">123</span></a>
+                            <ul>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Para Hogar</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Para Departamento</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Para Jardin</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="active">
+                            <a href="@Url.Action("Index", "Store")">Tamaños<span class="badge pull-right">11</span></a>
+                            <ul>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Grande</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Mediano</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Pequeño</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Semillas</a>
+                                </li>
+                            </ul>
+                        </li class="active">
+
+                        <li class="active">
+                            <a href="@Url.Action("Index", "Store")">Colores<span class="badge pull-right">11</span></a>
+                            <ul class="colapse">
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Amarillo</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Morado</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Verde</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Store")">Gris</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+            <!--
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Tamaños <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> Limpiar</a></h3>
+                </div>
+
+                <div class="panel-body">
+
+                    <form>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">Grande (10)
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">Mediano (12)
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">Pequeño (15)
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">Semillas (14)
+                                </label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Aplicar</button>
+
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Color de maceta <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> Clear</a></h3>
+                </div>
+
+                <div class="panel-body">
+
+                    <form>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> <span class="colour white"></span> Blanco
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> <span class="colour blue"></span> Gris
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> <span class="colour green"></span> Verde
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> <span class="colour yellow"></span> amarillo
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> <span class="colour red"></span> Negro
+                                </label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Aplicar</button>
+
+                    </form>
+
+                </div>
+            </div>
+            -->
+            <!-- *** MENUS AND FILTERS END *** -->
+            <!--
+                <div class="banner">
+                <a href="#">
+                    <img src="~/img/banner.jpg" alt="sales 2014" class="img-responsive">
+                </a>
+            </div>
+            -->
+            
+
+        </div>
+
+        <div class="col-md-9">
+            <!--
+                <div class="box">
+                <h1>Plantas para Departamentos</h1>
+                <p>Decora y dale vida a tu departamento</p>
+            </div>
+            -->
+            <div class="box info-bar">
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 products-showing">
+                        Viendo <strong>9</strong> de <strong>@{var i = Model; @i.Capacity}</strong> productos
+                    </div>
+
+                    <div class="col-sm-12 col-md-8  products-number-sort">
+                        <div class="row">
+                            <form class="form-inline">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="products-number">
+                                        <!--<strong>Ver</strong>  <a href="#" class="btn btn-default btn-sm btn-primary">12</a>  <a href="#" class="btn btn-default btn-sm">24</a>  <a href="#" class="btn btn-default btn-sm">Todos</a> productos-->
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="products-sort-by">
+                                        <strong>Ordenar por</strong>
+                                        <select name="sort-by" class="form-control">
+                                            <option>Precio</option>
+                                            <option>Nombre</option>
+                                            <option>Recomendados</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row products">
+
+                @foreach (var item in Model)
+                {
+                    var imagen = @item.ProductoImagen.FirstOrDefault();
+                    string img = imagen == null ? "no_disponible.jpg" : imagen.Imagen;
+
+                    <div class="col-md-4 col-sm-6">
+                        <div class="product">
+                            <div class="flip-container">
+                                <div class="flipper">
+                                    <div class="front">
+                                        <a href="@Url.Action("Product","Store")">
+                                            <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                    <div class="back">
+                                        <a href="@Url.Action("Product", "Store")">
+                                            <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="@Url.Action("Product", "Store")" class="invisible">
+                                <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+                            </a>
+                            <div class="text">
+                                <h3><a href="#">@item.Denominacion</a></h3>
+                                <p class="price">S/. @item.Precio</p>
+                                <p class="buttons">
+                                    <a href="@Url.Action("Product", "Store")" class="btn btn-default">Ver Detalles</a>
+                                    <a href="@Url.Action("Index", "Basket")" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Añadir al Carrito</a>
+                                </p>
+                            </div>
+                            <!-- /.text -->
+                        </div>
+                        <!-- /.product -->
+                    </div>
+                }
+                
+                @*
+                <div class="col-md-4 col-sm-6">
+                    <div class="product">
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front">
+                                    <a href="@Url.Action("Product", "Store", new { id = "productoWhiteBlue"})">
+                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                                <div class="back">
+                                    <a href="@Url.Action("Product", "Store", new { id = "productoWhiteBlue"})">
+                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="@Url.Action("Product", "Store", new { id = "productoWhiteBlue"})" class="invisible">
+                            <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                        </a>
+                        <div class="text">
+                            <h3><a href="@Url.Action("Product", "Store", new { id = "productoWhiteBlue"})">White Blouse Armani</a></h3>
+                            <p class="price"><del>$280</del> $143.00</p>
+                            <p class="buttons">
+                                <a href="@Url.Action("Product", "Store", new { id = "productoWhiteBlue"})" class="btn btn-default">Ver Detalles</a>
+                                <a href="@Url.Action("Index", "Basket")" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Añadir al Carrito</a>
+                            </p>
+                        </div>
+                        <!-- /.text -->
+
+                        <div class="ribbon sale">
+                            <div class="theribbon">SALE</div>
+                            <div class="ribbon-background"></div>
+                        </div>
+                        <!-- /.ribbon -->
+
+                        <div class="ribbon new">
+                            <div class="theribbon">NEW</div>
+                            <div class="ribbon-background"></div>
+                        </div>
+                        <!-- /.ribbon -->
+
+                        <div class="ribbon gift">
+                            <div class="theribbon">GIFT</div>
+                            <div class="ribbon-background"></div>
+                        </div>
+                        <!-- /.ribbon -->
+                    </div>
+                    <!-- /.product -->
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="product">
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front">
+                                    <a href="detail.html">
+                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                                <div class="back">
+                                    <a href="detail.html">
+                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="detail.html" class="invisible">
+                            <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                        </a>
+                        <div class="text">
+                            <h3><a href="detail.html">Black Blouse Versace</a></h3>
+                            <p class="price">$143.00</p>
+                            <p class="buttons">
+                                <a href="@Url.Action("Product", "Store")" class="btn btn-default">Ver Detalles</a>
+                                <a href="@Url.Action("Index", "Basket")" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Añadir al Carrito</a>
+                            </p>
+
+                        </div>
+                        <!-- /.text -->
+                    </div>
+                    <!-- /.product -->
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="product">
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front">
+                                    <a href="detail.html">
+                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                                <div class="back">
+                                    <a href="detail.html">
+                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="detail.html" class="invisible">
+                            <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                        </a>
+                        <div class="text">
+                            <h3><a href="detail.html">Black Blouse Versace</a></h3>
+                            <p class="price">$143.00</p>
+                            <p class="buttons">
+                                <a href="@Url.Action("Product", "Store")" class="btn btn-default">Ver Detalles</a>
+                                <a href="@Url.Action("Index", "Basket")" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Añadir al Carrito</a>
+                            </p>
+
+                        </div>
+                        <!-- /.text -->
+                    </div>
+                    <!-- /.product -->
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="product">
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front">
+                                    <a href="detail.html">
+                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                                <div class="back">
+                                    <a href="detail.html">
+                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="detail.html" class="invisible">
+                            <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                        </a>
+                        <div class="text">
+                            <h3><a href="detail.html">White Blouse Versace</a></h3>
+                            <p class="price">$143.00</p>
+                            <p class="buttons">
+                                <a href="@Url.Action("Product", "Store")" class="btn btn-default">Ver Detalles</a>
+                                <a href="@Url.Action("Index", "Basket")" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Añadir al Carrito</a>
+                            </p>
+
+                        </div>
+                        <!-- /.text -->
+
+                        <div class="ribbon new">
+                            <div class="theribbon">NEW</div>
+                            <div class="ribbon-background"></div>
+                        </div>
+                        <!-- /.ribbon -->
+                    </div>
+                    <!-- /.product -->
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="product">
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front">
+                                    <a href="detail.html">
+                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                                <div class="back">
+                                    <a href="detail.html">
+                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="detail.html" class="invisible">
+                            <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                        </a>
+                        <div class="text">
+                            <h3><a href="detail.html">Fur coat</a></h3>
+                            <p class="price">$143.00</p>
+                            <p class="buttons">
+                                <a href="@Url.Action("Product", "Store")" class="btn btn-default">Ver Detalles</a>
+                                <a href="@Url.Action("Index", "Basket")" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Añadir al Carrito</a>
+                            </p>
+
+                        </div>
+                        <!-- /.text -->
+
+                        <div class="ribbon gift">
+                            <div class="theribbon">GIFT</div>
+                            <div class="ribbon-background"></div>
+                        </div>
+                        <!-- /.ribbon -->
+
+                    </div>
+                    <!-- /.product -->
+                </div>
+
+                *@
+                <!-- /.col-md-4 -->
+            </div>
+            <!-- /.products -->
+
+            <div class="pages">
+
+                <p class="loadMore">
+                    <a href="#" class="btn btn-primary btn-lg"><i class="fa fa-chevron-down"></i> Ver Más</a>
+                </p>
+
+                <ul class="pagination">
+                   @foreach (var item in Model)
+                   {
+                       int cont = 0;
+                       cont++;
+                       if (cont % 9 == 0)
+                       {
+                        <li>
+                            <a href="#"></a>
+
+                  </li>
+                       }
+                    
+                   }
+                    
+                    
+                </ul>
+            </div>
+
+
+        </div>
+        <!-- /.col-md-9 -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /#content -->
+

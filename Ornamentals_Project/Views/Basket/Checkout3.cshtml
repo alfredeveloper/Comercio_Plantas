@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Checkout3";
+}
+
+<div id="content">
+    <div class="container">
+
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index","Home")">Home</a>
+                </li>
+                <li>Modo de Pago</li>
+            </ul>
+        </div>
+
+        <div class="col-md-9" id="checkout">
+
+            <div class="box">
+                <form method="post" action="@Url.Action("Checkout4","Basket")">
+                    <h1>Modo de Pago</h1>
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="@Url.Action("Checkout1","Basket")"><i class="fa fa-map-marker"></i><br>Address</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Checkout2","Basket")"><i class="fa fa-truck"></i><br>Modo de Envío</a>
+                        </li>
+                        <li class="active">
+                            <a href="#"><i class="fa fa-money"></i><br>Modo de Pago</a>
+                        </li>
+                        <li class="disabled">
+                            <a href="#"><i class="fa fa-eye"></i><br>Revisión del pedido</a>
+                        </li>
+                    </ul>
+
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="box payment-method">
+
+                                    <h4>Paypal</h4>
+
+                                    <p>We like it all.</p>
+
+                                    <div class="box-footer text-center">
+
+                                        <input type="radio" name="payment" value="payment1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="box payment-method">
+
+                                    <h4>Payment gateway</h4>
+
+                                    <p>VISA and Mastercard only.</p>
+
+                                    <div class="box-footer text-center">
+
+                                        <input type="radio" name="payment" value="payment2">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="box payment-method">
+
+                                    <h4>Cash on delivery</h4>
+
+                                    <p>You pay when you get it.</p>
+
+                                    <div class="box-footer text-center">
+
+                                        <input type="radio" name="payment" value="payment3">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+
+                    </div>
+                    <!-- /.content -->
+
+                    <div class="box-footer">
+                        <div class="pull-left">
+                            <a href="@Url.Action("Checkout2","Basket")" class="btn btn-default"><i class="fa fa-chevron-left"></i>Atrás</a>
+                        </div>
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary">
+                                Continuar<i class="fa fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box -->
+
+
+        </div>
+        <!-- /.col-md-9 -->
+
+        <div class="col-md-3">
+            <div class="box" id="order-summary">
+                <div class="box-header">
+                    <h3>Resumen del pedido</h3>
+                </div>
+                <p class="text-muted">El envío y los costes adicionales se calculan en función de los valores introducidos.</p>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Subtotal de Orden</td>
+                                <th>$446.00</th>
+                            </tr>
+                            <tr>
+                                <td>Envío y manipulación</td>
+                                <th>$10.00</th>
+                            </tr>
+                            <tr>
+                                <td>Impuestos</td>
+                                <th>$0.00</th>
+                            </tr>
+                            <tr class="Total">
+                                <td>Total</td>
+                                <th>$456.00</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+
+            <div class="box">
+                <div class="box-header">
+                    <h4>Código de Cupón</h4>
+                </div>
+                <p class="text-muted">Si tienes un código de cupón, ingresa en el cuadro de abajo.</p>
+                <form>
+                    <div class="input-group">
+
+                        <input type="text" class="form-control">
+
+                        <span class="input-group-btn">
+
+                            <button class="btn btn-primary" type="button"><i class="fa fa-gift"></i></button>
+
+                        </span>
+                    </div>
+                    <!-- /input-group -->
+                </form>
+            </div>
+
+        </div>
+        <!-- /.col-md-3 -->
+
+    </div>
+    <!-- /.container -->
+</div>
