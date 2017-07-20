@@ -274,7 +274,7 @@
                                 <p class="price">S/. @item.Precio</p>
                                 <p class="buttons">
                                     <a href="@Url.Action("Product", "Store")" class="btn btn-default">Ver Detalles</a>
-                                    <a href="@Url.Action("Index", "Basket")" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Añadir al Carrito</a>
+                                    <a onclick="AgregarCarrito(@item.ProductoId, '@item.Denominacion', '@img', @item.Precio)" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
                                 </p>
                             </div>
                             <!-- /.text -->

@@ -14,7 +14,7 @@ namespace Ornamentals_Project.Controllers
         {
             var productos = db.Producto
                 .Where(x=>x.Descripcion.Contains(id))
-                .Take(9)
+                .Take(21)
                 .ToList();
             return View(productos);
         }

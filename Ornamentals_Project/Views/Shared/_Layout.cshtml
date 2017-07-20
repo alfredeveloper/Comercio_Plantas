@@ -109,7 +109,7 @@
 
                 <a class="navbar-brand home" href="@Url.Action("Index","Home")" data-animate-hover="bounce">
                     <img src="~/img/log.jpg" alt="Obaju logo" class="hidden-xs">
-                    <img src="~/img/log-small.jpg" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
+                    <img src="~/img/log-small.jpg" alt="Obaju logo" class="visible-xs"><span class="sr-only">Home</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
@@ -441,11 +441,61 @@
             <!--/.nav-collapse -->
 
             <div class="navbar-buttons">
-
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="@Url.Action("Index", "Basket")" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 artículos en el carrito</span></a>
+                    <div class="nav navbar-nav navbar-right">
+                        <div class="dropdown yamm-fw">
+                            <a href="@Url.Action("Index", "Basket")"  onmouseover="Desplegar();" onmouseout="Ocultar();" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i> &nbsp; cart<label id="nroProductosCarrito"></label>&nbsp; &nbsp;<span class="hidden-sm"></span><label id="totalCompraCarrito"></label></a>
+                        </div>
+                        <div id="despliegueDiv" style="display:none; width:400px;" class="dropdown-menu">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nombre</th>
+                                            <th>Precio</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id="itemcarrito">
+                                        <!--
+                                        <tr>
+                                            <td>
+                                                <a href="#">
+                                                    <img src="~/img/planta-1.jpg" alt="White Blouse Armani"style="height:45px; width:40px;">
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="#">White Blouse Armani</a>
+                                            </td>
+                                            
+                                            <td>S/. 123.00</td>
+                                        </tr>
+                                        -->
+                                        
+                                        
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="2">Total</th>
+                                            <th colspan="1"><p id="totalCarrito"></p></th> 
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2"></th>
+                                            <th colspan="1"><button class="btn btn-danger">Realizar Pago</button></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
                 </div>
-                <!--/.nav-collapse -->
+                
+                
+                
 
                 <div class="navbar-collapse collapse right" id="search-not-mobile">
                     <button type="button" class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
@@ -667,6 +717,93 @@
     <script src="~/js/ornamentals/enlaces.js"></script>
     <script src="~/js/ornamentals/ornamentals.animation.js"></script>
 
+    <script>
+        function Desplegar() {
+            document.getElementById("despliegueDiv").style.display = "block";
+        };
+        function Ocultar() {
+            document.getElementById("despliegueDiv").style.display = "none";
+        };
+    </script>
+    <script>
+
+        $(function () {
+            var carrito = localStorage.getItem("carrito");
+            var productos = [];
+            if (carrito != null) {
+                productos = JSON.parse(carrito);
+                CargaCarrito(productos);
+            }
+        });
+
+        function AgregarCarrito(productoid, denominacion, imagen, precio) {
+            var carrito = localStorage.getItem("carrito");
+            var productos = [];
+            if (carrito != null) {
+                productos = JSON.parse(carrito);
+            }
+
+            var itemActual;
+            for (var i = 0; i < productos.length; i++) {
+                if (productos[i].ProductoId == productoid) {
+                    itemActual = productos[i];
+                }
+            }
+
+            if (!itemActual) {
+                productos.push({ ProductoId: productoid, Denominacion: denominacion, Precio: precio, Cantidad: 1, Imagen: imagen });
+            } else {
+                itemActual.Cantidad++;
+            }
+
+            var jsonStr = JSON.stringify(productos);
+            localStorage.setItem("carrito", jsonStr);
+
+            CargaCarrito(productos);
+
+        }
+
+        function CargaCarrito(productos) {
+            var html = '';
+            var total = 0;
+
+            $("#nroProductosCarrito").text('(' + productos.length + ')');
+
+            $.each(productos, function () {
+                total += this.Precio * this.Cantidad
+                html += /*'<div class="item-in-cart clearfix">' +
+                       '    <div class="image">' +
+                '             <img src="http://localhost/Admin/ImgProductos/' + this.Imagen + '"  width="124" height="124" alt="cart item" />' +
+                '           </div>' +
+                '           <div class="desc">' +
+                '                 <strong><a href="product.html">' + this.Denominacion + '</a></strong>' +
+                '                <span class="light-clr qty">Qty: ' + this.Cantidad + ' &nbsp;' +
+                '                       <a href="#" class="icon-remove-sign" title="Remove Item"></a>' +
+                '                    </span>' +
+                '                </div>' +
+                '                <div class="price">' +
+                '                   <strong>S/. ' + this.Precio + '</strong>' +
+                '               </div>' +
+                '           </div>'+*/
+                '           <tr>'+
+                '                <td>'+
+                '                    <a href="#">'+
+                '                        <img src="/ImgProductos/'+this.Imagen+'" alt="White Blouse Armani"style="height:45px; width:40px;">'+
+                '                    </a>'+
+                '                </td>'+
+                '                <td>' +
+                '                    <a href="#">'+this.Denominacion+'</a>'+
+                '                </td>'+                        
+                '                <td>S/. ' + this.Precio + '</td>' +
+                '            </tr>'
+            });
+            $('#itemcarrito').html(html);
+
+            $("#totalCompraCarrito,#totalCarrito").text('S/.' + total);
+
+        }
+
+    </script>
 
 </body>
 
