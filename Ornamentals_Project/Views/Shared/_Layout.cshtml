@@ -766,11 +766,13 @@
         function CargaCarrito(productos) {
             var html = '';
             var total = 0;
+            var totalFinal = 0;
 
             $("#nroProductosCarrito").text('(' + productos.length + ')');
 
             $.each(productos, function () {
-                total += this.Precio * this.Cantidad
+                totalFinal += this.Precio * this.Cantidad;
+                total = this.Precio * this.Cantidad
                 html += /*'<div class="item-in-cart clearfix">' +
                        '    <div class="image">' +
                 '             <img src="http://localhost/Admin/ImgProductos/' + this.Imagen + '"  width="124" height="124" alt="cart item" />' +
@@ -794,12 +796,12 @@
                 '                <td>' +
                 '                    <a href="#">'+this.Denominacion+'</a>'+
                 '                </td>'+                        
-                '                <td>S/. ' + this.Precio + '</td>' +
+                '                <td>S/. ' + total + '</td>' +
                 '            </tr>'
             });
             $('#itemcarrito').html(html);
 
-            $("#totalCompraCarrito,#totalCarrito").text('S/.' + total);
+            $("#totalCompraCarrito,#totalCarrito").text('S/.' + totalFinal);
 
         }
 

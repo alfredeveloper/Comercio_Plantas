@@ -40,14 +40,15 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th colspan="2">Product</th>
-                                        <th>Quantity</th>
-                                        <th>Unit price</th>
-                                        <th>Discount</th>
-                                        <th>Total</th>
+                                        <th colspan="2">Producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio Unitario</th>
+                                        <th>Descuento</th>
+                                        <th colspan="2">Total</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="itemcarrito3">
+                                    <!--
                                     <tr>
                                         <td>
                                             <a href="#">
@@ -57,30 +58,24 @@
                                         <td>
                                             <a href="#">White Blouse Armani</a>
                                         </td>
-                                        <td>2</td>
+                                        <td>
+                                            <input type="number" value="2" class="form-control">
+                                        </td>
                                         <td>$123.00</td>
                                         <td>$0.00</td>
                                         <td>$246.00</td>
-                                    </tr>
-                                    <tr>
                                         <td>
-                                            <a href="#">
-                                                <img src="~/img/planta-1.jpg" alt="Black Blouse Armani">
-                                            </a>
+                                            <a href="#"><i class="fa fa-trash-o"></i></a>
                                         </td>
-                                        <td>
-                                            <a href="#">Black Blouse Armani</a>
-                                        </td>
-                                        <td>1</td>
-                                        <td>$200.00</td>
-                                        <td>$0.00</td>
-                                        <td>$200.00</td>
                                     </tr>
+                                    -->
+
+
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th colspan="5">Total</th>
-                                        <th>$446.00</th>
+                                        <th colspan="2" id="totalCompra"></th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -117,7 +112,7 @@
 
                 <div class="table-responsive">
                     <table class="table">
-                        <tbody>
+                        <tbody id="itemcarrito3">
                             <tr>
                                 <td>Subtotal de Orden</td>
                                 <th>$446.00</th>
@@ -167,4 +162,55 @@
     </div>
     <!-- /.container -->
 </div>
+<script src="~/js/jquery-1.11.0.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/jquery.cookie.js"></script>
+<script src="~/js/waypoints.min.js"></script>
+<script src="~/js/modernizr.js"></script>
+<script src="~/js/bootstrap-hover-dropdown.js"></script>
+<script src="~/js/owl.carousel.min.js"></script>
+<script src="~/js/front.js"></script>
+<!--MY SCRIPTS-->
+<script src="~/js/ornamentals/enlaces.js"></script>
+<script src="~/js/ornamentals/ornamentals.animation.js"></script>
+<script>
+        $(function () {
+            var carrito = localStorage.getItem("carrito");
+            var productos = [];
+            if (carrito != null) {
+                productos = JSON.parse(carrito);
+                CargarProductos(productos);
+            }
+        });
+        function CargarProductos(productos) {
+            var html = '';
+            var total = 0;
+            var totalFinal = 0;
 
+            $.each(productos, function () {
+                totalFinal += this.Precio * this.Cantidad;
+                total = this.Precio * this.Cantidad;
+                html += '   <tr>'+
+                '                <td>'+
+                '                    <a href="#">'+
+                '                        <img src="/ImgProductos/'+this.Imagen+'" alt="White Blouse Armani"style="height:50px; width:50px;">'+
+                '                    </a>' +
+                '                </td>' +
+                '                <td>' +
+                '                    <a href="#">' + this.Denominacion + '</a>' +
+                '                </td>' +
+                '                <td>' +
+                '                    <label>' + this.Cantidad + '</label>' +
+                '                </td>' +
+                '                <td>S/. ' + this.Precio + '</td>' +
+                '                <td>S/. 0.00</td>' +
+                '                <td>' +total+
+                '                </td>'+
+                '                <td><a href="#"><i class="fa fa-trash-o"></i></a></td>'
+                '            </tr>'
+            });
+            $('#itemcarrito3').html(html);
+
+            $("#totalCompra").text('S/.' + totalFinal);
+        }
+</script>
