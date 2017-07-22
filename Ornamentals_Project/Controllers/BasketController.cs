@@ -8,6 +8,7 @@ namespace Ornamentals_Project.Controllers
 {
     public class BasketController : Controller
     {
+        private Models.Ornamentals_dbEntities bd = new Models.Ornamentals_dbEntities();
         // GET: Basket
         public ActionResult Index()
         {
@@ -16,7 +17,8 @@ namespace Ornamentals_Project.Controllers
         // GET: Checkout1
         public ActionResult Checkout1()
         {
-            return View();
+            var cliente = bd.Cliente.Find(Helper.SessionHelper.GetUser());
+            return View(cliente);
         }
         // GET: Checkout2
         public ActionResult Checkout2()
@@ -33,5 +35,45 @@ namespace Ornamentals_Project.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public JsonResult RealizarPedido(List<Pedidos> p)
+        {
+            // guardar en base de datos
+            var clienteid = Helper.SessionHelper.GetUser();
+            var pcab = new Models.Pedido
+            {
+                ClienteId = clienteid,
+                Estado = "P",
+                Fecha = DateTime.Now
+            };
+
+            bd.Pedido.Add(pcab);
+            bd.SaveChanges();
+
+
+            foreach (var item in p)
+            {
+                var pdet = new Models.PedidoDetalle
+                {
+                    PedidoId = pcab.PedidoId,
+                    Cantidad = item.Cantidad,
+                    ProductoId = item.ProductoId
+                };
+                bd.PedidoDetalle.Add(pdet);
+                bd.SaveChanges();
+            }
+
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public class Pedidos
+        {
+            public int ProductoId { get; set; }
+            public string Denominacion { get; set; }
+            public int Cantidad { get; set; }
+            public string Imagen { get; set; }
+            public decimal Precio { get; set; }
+        }
+
     }
 }

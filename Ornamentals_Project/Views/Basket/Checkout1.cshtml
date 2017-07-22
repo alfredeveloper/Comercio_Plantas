@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Checkout1";
 }
+@model Ornamentals_Project.Models.Cliente
 
 <div id="content" onload="down();">
     <div class="container">
@@ -40,13 +41,13 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="firstname">Nombres</label>
-                                    <input type="text" class="form-control" id="firstname">
+                                    <input type="text" class="form-control" id="firstname" value="@Model.Nombres">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="lastname">Apellidos</label>
-                                    <input type="text" class="form-control" id="lastname">
+                                    <input type="text" class="form-control" id="lastname" value="@Model.Apellidos">
                                 </div>
                             </div>
                         </div>
@@ -76,7 +77,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="street">Dirección</label>
-                                    <input type="text" class="form-control" id="street">
+                                    <input type="text" class="form-control" id="street" value="@Model.Direccion">
                                 </div>
                             </div>
                         </div>
@@ -101,13 +102,13 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="text" class="form-control" id="email">
+                                    <input type="text" class="form-control" id="email" value="@Model.Correo">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="phone">Teléfono</label>
-                                    <input type="text" class="form-control" id="phone">
+                                    <input type="text" class="form-control" id="phone" value="@Model.Celular">
                                 </div>
                             </div>
 

@@ -20,7 +20,7 @@
 
                     <h1>Carrito de Compras</h1>
                     <p class="text-muted">Tiene 3 item(s) en su carrito.</p>
-                    <div class="table-responsive">
+                    <div class="table-responsive" >
                         <table class="table">
                             <thead>
                                 <tr>
@@ -283,7 +283,7 @@
                 '                <td>S/. ' + this.Precio + '</td>' +
                 '                <td>S/. 0.00</td>' +
                 '                <td>' +total+'</td>'+
-                '                <td><a href="#"><i class="fa fa-trash-o"></i></a></td>'
+                '                <td><a href="#" onclick="EliminarDeCarrito(' + this.ProductoId + ');"><i class="fa fa-trash-o"></i></a></td>'
                 '            </tr>'
             });
             $('#itemcarrito2').html(html);

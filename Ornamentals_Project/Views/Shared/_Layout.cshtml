@@ -853,6 +853,22 @@
 
         }
 
+        function EliminarDeCarrito(productoid) {
+            var carrito = localStorage.getItem("carrito");
+            var productos = JSON.parse(carrito);
+             
+            for (var i = 0; i < productos.length; i++) {
+                //alert(productos[i].ProductoId);
+                if (productos[i].ProductoId == productoid) {
+                    productos.splice(i,1);
+                }
+            }
+            localStorage.removeItem("carrito");
+            var jsonStr = JSON.stringify(productos);
+            localStorage.setItem("carrito", jsonStr);
+            window.location = '@Url.Action("Index","Basket")'
+        }
+
         function CargaCarrito(productos) {
             var html = '';
             var total = 0;

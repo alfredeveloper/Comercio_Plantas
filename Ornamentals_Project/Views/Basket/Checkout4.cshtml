@@ -18,7 +18,7 @@
         <div class="col-md-9" id="checkout">
 
             <div class="box">
-                <form method="post" action="@Url.Action("Index","Store")">
+                
                     <h1>Revisión del pedido</h1>
                     <ul class="nav nav-pills nav-justified">
                         <li>
@@ -89,13 +89,15 @@
                         <div class="pull-left">
                             <a href="@Url.Action("Checkout3","Basket")" class="btn btn-default"><i class="fa fa-chevron-left"></i>Atrás</a>
                         </div>
-                        <div class="pull-right">
-                            <button type="submit" class="btn btn-primary">
-                                Confirmar Compra<i class="fa fa-chevron-right"></i>
-                            </button>
-                        </div>
+                        <form method="post">
+                            <div class="pull-right">
+                                <button id="btnConfirmar"  type="submit" class="btn btn-primary">
+                                    Confirmar Compra<i class="fa fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                
             </div>
             <!-- /.box -->
 
@@ -182,6 +184,40 @@
                 CargarProductos(productos);
             }
         });
+    
+        $("#btnConfirmar").click(function () {
+            
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                url: '@Url.Action("RealizarPedido","Basket")',
+                data: carrito,
+                success: function () {
+                    localStorage.removeItem("carrito");
+                    window.location = '@Url.Action("Index","Store")';
+                }
+            });
+
+        });
+    
+    @*
+        function LimpiarLocalStorage() {
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            url: '@Url.Action("RealizarPedido","Basket")',
+            data: carrito,
+            success: function () {
+                localStorage.removeItem("carrito");
+                window.location = '@Url.Action("Index","Store")';
+            }
+        });
+    }
+    *@
+
+
         function CargarProductos(productos) {
             var html = '';
             var total = 0;
@@ -206,7 +242,7 @@
                 '                <td>S/. 0.00</td>' +
                 '                <td>' +total+
                 '                </td>'+
-                '                <td><a href="#"><i class="fa fa-trash-o"></i></a></td>'
+                '                <td hidden><a href="#"><i class="fa fa-trash-o"></i></a></td>'
                 '            </tr>'
             });
             $('#itemcarrito3').html(html);
