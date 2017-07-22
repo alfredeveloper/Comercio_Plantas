@@ -51,21 +51,49 @@
             </div>
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
-                    <li>
-                        <a href="#" data-toggle="modal" data-target="#login-modal">Inicia Sesión</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index", "User")">Registrate</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Contact", "Home")">Contactos</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Products", "admin")">Administrador</a>
-                    </li>
+                    @if (!HttpContext.Current.User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#login-modal">Inicia Sesión</a>
+                        </li>
+                        <text> o </text>
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#register-modal">Registrate</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="#">Hola @Ornamentals_Project.Controllers.HomeController.ObtenerNombreUsuario()</a>
+                        </li>
+                        <text> o </text>
+                        <li>
+                            <a href="@Url.Action("Logout", "Home" )"> Cerrar Sesion </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Contact", "Home")">Contactos</a>
+                        </li>
+                        if (@Ornamentals_Project.Controllers.HomeController.ObtenerNombreUsuario().ToString() == "admin" && @Ornamentals_Project.Controllers.HomeController.ObtenerPasswordUsuario().ToString() == "1234")
+                        {
+                            <li>
+                                <a href="@Url.Action("Products", "admin")">Administrador</a>
+                            </li>
+                        }
+
+                    }
+                    <!--
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#login-modal">Inicia Sesión</a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#register-modal">Registrate</a>
+                        </li>
+                    -->
+                    
                 </ul>
             </div>
         </div>
+        <!--SIGN IN-->
         <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
             <div class="modal-dialog modal-sm">
 
@@ -75,22 +103,64 @@
                         <h4 class="modal-title" id="Login">Inicia Sesión</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="customer-orders.html" method="post">
+                        <form action="@Url.Action("Login","Home")" method="post">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="email-modal" placeholder="email">
+                                <input type="text" class="form-control" id="email-modal" placeholder="Usuario" name="usuario">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password-modal" placeholder="password">
+                                <input type="password" class="form-control" id="password-modal" placeholder="Contraseña" name="clave">
                             </div>
 
                             <p class="text-center">
-                                <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i>Log in</button>
                             </p>
 
                         </form>
 
                         <p class="text-center text-muted">¿Aún no estás registrado?</p>
-                        <p class="text-center text-muted"><a href="@Url.Action("Index", "User")"><strong>Registrate ahora</strong></a>! Es fácil y en menos de 1 minuto. Te daremos acceso a descuentos especiales y mucho más!!</p>
+                        <p class="text-center text-muted"><a href="#register-modal"><strong>Registrate ahora</strong></a>! Es fácil y en menos de 1 minuto. Te daremos acceso a descuentos especiales y mucho más!!</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--SING UP-->
+        <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="Login">Registrarse</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="@Url.Action("RegistrarCliente","Home")" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="email-modal" name="Nombres" placeholder="Nombres">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="email-modal" name="Apellidos" placeholder="Apellidos">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="email-modal" name="Usuario" placeholder="Usuario">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password-modal" name="Clave" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="email-modal" name="Correo" placeholder="Email">
+                            </div>
+                            
+
+                            <p class="text-center">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i>Registarse</button>
+                            </p>
+
+                        </form>
+
+                        <p class="text-center text-muted">¿ya estas registrado?</p>
+                        <p class="text-center text-muted"><a href="#login-modal"><strong>Inicia Sesion</strong></a>! Es fácil </p>
 
                     </div>
                 </div>
@@ -444,7 +514,27 @@
                 <div class="navbar-collapse collapse right" id="basket-overview">
                     <div class="nav navbar-nav navbar-right">
                         <div class="dropdown yamm-fw">
-                            <a href="@Url.Action("Index", "Basket")"  onmouseover="Desplegar();" onmouseout="Ocultar();" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i> &nbsp; cart<label id="nroProductosCarrito"></label>&nbsp; &nbsp;<span class="hidden-sm"></span><label id="totalCompraCarrito"></label></a>
+                            @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                            {
+                                <a href="@Url.Action("Index", "Basket")" onmouseover="Desplegar();" onmouseout="Ocultar();" class="btn btn-primary navbar-btn">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    &nbsp; cart<label id="nroProductosCarrito"></label>&nbsp; &nbsp;
+                                    <span class="hidden-sm"></span>
+                                    <label id="totalCompraCarrito"></label>
+                                </a>
+
+                            }
+                            else
+                            {
+                                <a href="#" onmouseover="Desplegar();" onmouseout="Ocultar();" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login-modal">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    &nbsp; cart<label id="nroProductosCarrito"></label>&nbsp; &nbsp;
+                                    <span class="hidden-sm"></span>
+                                    <label id="totalCompraCarrito"></label>
+                                </a>
+                                
+                            }
+                            
                         </div>
                         <div id="despliegueDiv" style="display:none; width:400px;" class="dropdown-menu">
                             <div class="table-responsive">

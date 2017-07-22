@@ -8,10 +8,13 @@ namespace Ornamentals_Project.Controllers
 {
     public class UserController : Controller
     {
+        private Models.Ornamentals_dbEntities db = new Models.Ornamentals_dbEntities();
         // GET: User
         public ActionResult Index()
         {
             return View();
         }
+        
+
     }
 }
