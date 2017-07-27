@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\Universidad\500_I\comercio electronico\laboratorio\proyecto_final\Ornamentals_Project\Ornamentals_Project\Models\ModelStore.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\Universidad\500_I\comercio electronico\laboratorio\proyecto_final\Ornamentals_Project_v1\Ornamentals_Project\Models\ModelStore.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

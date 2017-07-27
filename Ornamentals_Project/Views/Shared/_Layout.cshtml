@@ -541,10 +541,11 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th>Vista</th>
                                             <th>Nombre</th>
                                             <th>Precio</th>
-
+                                            <th>Cantidad</th>
+                                            <th>Total</th>
                                         </tr>
                                     </thead>
                                     <tbody id="itemcarrito">
@@ -567,12 +568,15 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
+                                            <th colspan="1"></th>
+                                            <th colspan="1"></th>
                                             <th colspan="2">Total</th>
                                             <th colspan="1"><p id="totalCarrito"></p></th> 
                                         </tr>
                                         <tr>
                                             <th colspan="2"></th>
-                                            <th colspan="1"><button class="btn btn-danger">Realizar Pago</button></th>
+                                            <th colspan="1"></th>
+                                            <th colspan="2"><button class="btn btn-danger">Realizar Pago</button></th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -901,7 +905,9 @@
                 '                </td>'+
                 '                <td>' +
                 '                    <a href="#">'+this.Denominacion+'</a>'+
-                '                </td>'+                        
+                '                </td>' +
+                '                <td>' + this.Precio + '</td>'+
+                '                <td>' + this.Cantidad + '</td>'+
                 '                <td>S/. ' + total + '</td>' +
                 '            </tr>'
             });

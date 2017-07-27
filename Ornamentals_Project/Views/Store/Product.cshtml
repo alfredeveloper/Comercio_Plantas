@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Ornamentals_Project.Models.Producto>
 @{
     ViewBag.Title = "Product";
 }
@@ -128,60 +128,70 @@
         </div>
 
         <div class="col-md-9">
-
+            
             <div class="row" id="productMain">
-                <div class="col-sm-6">
-                    <div id="mainImage">
-                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                    </div>
+                @foreach (var item in Model)
+                {
+                    var imagen = @item.ProductoImagen.FirstOrDefault();
+                    string img = imagen == null ? "no_disponible.jpg" : imagen.Imagen;
+                    <div class="col-sm-6">
 
-                    <div class="ribbon sale">
-                        <div class="theribbon">SALE</div>
-                        <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon -->
-
-                    <div class="ribbon new">
-                        <div class="theribbon">NEW</div>
-                        <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon -->
-
-                </div>
-                <div class="col-sm-6">
-                    <div class="box">
-                        <h1 class="text-center">Arbol Tropical</h1>
-                        <p class="goToDescription">
-                            <a href="#details" class="scroll-to">Ver Detalles</a>
-                        </p>
-                        <p class="price">S/.50.00</p>
-
-                        <p class="text-center buttons">
-                            <a href="@Url.Action("Index","Basket")" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Añadir a Carrito</a>
-                            <a href="@Url.Action("Index","Basket")" class="btn btn-default"><i class="fa fa-heart"></i> Añadir a lista de deseos</a>
-                        </p>
-
-
-                    </div>
-
-                    <div class="row" id="thumbs">
-                        <div class="col-xs-4">
-                            <a href="~/img/planta-1.jpg" class="thumb">
-                                <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                            </a>
+                        <div id="mainImage">
+                            <img src="~/ImgProductos/@img" alt="" class="img-responsive">
                         </div>
-                        <div class="col-xs-4">
-                            <a href="~/img/planta-1.jpg" class="thumb">
-                                <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                            </a>
+
+                        <div class="ribbon sale">
+                            <div class="theribbon">SALE</div>
+                            <div class="ribbon-background"></div>
                         </div>
-                        <div class="col-xs-4">
-                            <a href="~/img/planta-1.jpg" class="thumb">
-                                <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                            </a>
+                        <!-- /.ribbon -->
+
+                        <div class="ribbon new">
+                            <div class="theribbon">NEW</div>
+                            <div class="ribbon-background"></div>
+                        </div>
+                        <!-- /.ribbon -->
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="box">
+                            <h1 class="text-center">@item.Denominacion</h1>
+                            <!--
+                            <p class="goToDescription">
+                                <a href="#details" class="scroll-to">Ver Detalles</a>
+                            </p>  
+                            -->
+                            
+                            <p class="price">S/.@item.Precio</p>
+
+                            <p class="text-center buttons">
+                                <a onclick="AgregarCarrito(@item.ProductoId, '@item.Denominacion', '@img', @item.Precio)" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
+                                <a href="@Url.Action("Index","Basket")" class="btn btn-default"><i class="fa fa-heart"></i> Añadir a lista de deseos</a>
+                            </p>
+
+
+                        </div>
+
+                        <div class="row" id="thumbs">
+                            <div class="col-xs-4">
+                                <a href="~/ImgProductos/@img" class="thumb">
+                                    <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+                                </a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="~/ImgProductos/@img" class="thumb">
+                                    <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+                                </a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="~/ImgProductos/@img" class="thumb">
+                                    <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
+                
 
             </div>
 

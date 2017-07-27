@@ -12,18 +12,46 @@ namespace Ornamentals_Project.Controllers
         // GET: Store
         public ActionResult Index(string id = "")
         {
-            var productos = db.Producto
-                .Where(x=>x.Descripcion.Contains(id))
+            
+
+            if (id == "precio")
+            {
+                var productos = db.Producto.OrderBy(x => x.Precio)
                 .Take(21)
                 .ToList();
-            return View(productos);
+                return View(productos);
+            }
+            else if (id == "nombre")
+            {
+                var productos = db.Producto.OrderBy(x => x.Denominacion)
+                .Take(21)
+                .ToList();
+                return View(productos);
+            }
+            else
+            {
+                var productos = db.Producto
+                .Where(x => x.Descripcion.Contains(id))
+                .Take(21)
+                .ToList();
+                return View(productos);
+            }
+            //return View(productos);
         }
 
         // GET: Store
         public ActionResult Product(string id)
         {
-            ViewBag.producto = id;
-            return View();
+            int llave = int.Parse(id);
+            var producto = db.Producto
+                .Where(x => x.ProductoId == llave).ToList();
+            return View(producto);
         }
+
+        /*public ActionResult Category(string id = "")
+        {
+           
+            return 
+        }*/
     }
 }
