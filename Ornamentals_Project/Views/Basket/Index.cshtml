@@ -19,9 +19,9 @@
                 <form method="post" action="@Url.Action("Checkout1","Basket")">
 
                     <h1>Carrito de Compras</h1>
-                    <p class="text-muted">Tiene 3 item(s) en su carrito.</p>
+                    <p class="text-muted">Tiene <label id="CantItems"></label> item(s) en su carrito.</p>
                     <div class="table-responsive" >
-                        <table class="table">
+                        <table class="table" id="TableCarrito">
                             <thead>
                                 <tr>
                                     <th colspan="2">Producto</th>
@@ -72,7 +72,7 @@
                             <a href="category.html" class="btn btn-default"><i class="fa fa-chevron-left"></i> Volver</a>
                         </div>
                         <div class="pull-right">
-                            <button class="btn btn-default"><i class="fa fa-refresh"></i> Actualizar </button>
+                            <a class="btn btn-default" onclick="ActualizarCarrito();"><i class="fa fa-refresh"></i> Actualizar </a>
                             <button type="submit" class="btn btn-primary">
                                 Continuar <i class="fa fa-chevron-right"></i>
                             </button>
@@ -259,7 +259,11 @@
                 productos = JSON.parse(carrito);
                 CargarProductos(productos);
             }
+            var cantItems = (JSON.parse(localStorage.getItem("carrito"))).length;
+            $("#CantItems").text(cantItems);
+            
         });
+        
         function CargarProductos(productos) {
             var html = '';
             var total = 0;

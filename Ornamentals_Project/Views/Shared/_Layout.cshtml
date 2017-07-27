@@ -860,17 +860,38 @@
         function EliminarDeCarrito(productoid) {
             var carrito = localStorage.getItem("carrito");
             var productos = JSON.parse(carrito);
-             
+
             for (var i = 0; i < productos.length; i++) {
                 //alert(productos[i].ProductoId);
                 if (productos[i].ProductoId == productoid) {
-                    productos.splice(i,1);
+                    productos.splice(i, 1);
                 }
             }
             localStorage.removeItem("carrito");
             var jsonStr = JSON.stringify(productos);
             localStorage.setItem("carrito", jsonStr);
             window.location = '@Url.Action("Index","Basket")'
+        }
+
+        function ActualizarCarrito() {
+            var SizeRowTable = $("#TableCarrito tbody tr td input[type=number]").length;
+            var TableInputs = $("#TableCarrito tbody tr td input[type=number]");
+            var ArrayCant = [];
+            for (var i = 0; i < SizeRowTable; i++) {
+                ArrayCant[i] = TableInputs[i].value;
+            }
+
+            var CarritoArray = JSON.parse(localStorage.getItem("carrito"));
+            console.log(CarritoArray);
+            for (var i = 0; i < CarritoArray.length; i++) {
+
+                CarritoArray[i].Cantidad = ArrayCant[i];
+            }
+            localStorage.removeItem("carrito");
+            var jsonStr = JSON.stringify(CarritoArray);
+            localStorage.setItem("carrito", jsonStr);
+            window.location = '@Url.Action("Index","Basket")';
+
         }
 
         function CargaCarrito(productos) {
@@ -897,17 +918,17 @@
                 '                   <strong>S/. ' + this.Precio + '</strong>' +
                 '               </div>' +
                 '           </div>'+*/
-                '           <tr>'+
-                '                <td>'+
-                '                    <a href="#">'+
-                '                        <img src="/ImgProductos/'+this.Imagen+'" alt="White Blouse Armani"style="height:45px; width:40px;">'+
-                '                    </a>'+
-                '                </td>'+
+                '           <tr>' +
                 '                <td>' +
-                '                    <a href="#">'+this.Denominacion+'</a>'+
+                '                    <a href="#">' +
+                '                        <img src="/ImgProductos/' + this.Imagen + '" alt="White Blouse Armani"style="height:45px; width:40px;">' +
+                '                    </a>' +
                 '                </td>' +
-                '                <td>' + this.Precio + '</td>'+
-                '                <td>' + this.Cantidad + '</td>'+
+                '                <td>' +
+                '                    <a href="#">' + this.Denominacion + '</a>' +
+                '                </td>' +
+                '                <td>' + this.Precio + '</td>' +
+                '                <td>' + this.Cantidad + '</td>' +
                 '                <td>S/. ' + total + '</td>' +
                 '            </tr>'
             });
