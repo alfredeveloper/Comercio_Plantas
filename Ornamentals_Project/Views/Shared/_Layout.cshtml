@@ -945,7 +945,10 @@
             $('#itemcarrito').html(html);
 
             $("#totalCompraCarrito,#totalCarrito").text('S/.' + totalFinal);
-
+            
+            $("#subtotal").text('S/.' + totalFinal + '.00');
+            var totalMonto = totalFinal + 10;
+            $("#total").text('S/.' + totalMonto + '.00');
         }
 
     </script>

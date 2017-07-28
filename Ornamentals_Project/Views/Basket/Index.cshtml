@@ -151,19 +151,19 @@
                         <tbody>
                             <tr>
                                 <td>Subtotal de Orden</td>
-                                <th>$446.00</th>
+                                <th id="subtotal"></th>
                             </tr>
                             <tr>
                                 <td>Envío y manipulación</td>
-                                <th>$10.00</th>
+                                <th>S/.5.00</th>
                             </tr>
                             <tr>
                                 <td>Impuestos</td>
-                                <th>$0.00</th>
+                                <th>S/.5.00</th>
                             </tr>
                             <tr class="Total">
                                 <td>Total</td>
-                                <th>$456.00</th>
+                                <th id="total"></th>
                             </tr>
                         </tbody>
                     </table>
@@ -251,5 +251,8 @@
             $('#itemcarrito2').html(html);
 
             $("#totalCompra").text('S/.' + totalFinal);
+            
+            
+
         }
 </script>
