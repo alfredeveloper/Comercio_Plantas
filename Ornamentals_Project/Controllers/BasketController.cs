@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -39,6 +40,29 @@ namespace Ornamentals_Project.Controllers
         {
             return View();
         }
+        public ActionResult ActualizarCliente([Bind(Include = "ClienteId,Nombres,Apellidos,Correo,Celular,Direccion")] Models.Cliente c)
+        {
+            if (ModelState.IsValid)
+            {
+                var dato = bd.Cliente.Find(c.ClienteId);
+                dato.Nombres = c.Nombres;
+                dato.Apellidos = c.Apellidos;
+                dato.Correo = c.Correo;
+                dato.Celular = c.Celular;
+                dato.Direccion = c.Direccion;
+                bd.Entry(dato).State = EntityState.Modified;
+                //bd.Entry(dato).CurrentValues.SetValues(c);
+                //bd.Cliente.Attach(c);
+                bd.SaveChanges();
+                //Helper.SessionHelper.AddUserToSession(c.ClienteId.ToString());
+                return RedirectToAction("Checkout2", "Basket");
+            }else
+            {
+                return RedirectToAction("Checkout1", "Basket");
+            }
+            
+        }
+
         [HttpPost]
         public JsonResult RealizarPedido(List<Pedidos> p)
         {

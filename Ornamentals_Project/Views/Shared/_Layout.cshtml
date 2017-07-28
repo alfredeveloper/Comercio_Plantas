@@ -12,7 +12,7 @@
     <meta name="keywords" content="">
 
     <title>
-        Ornamentals 
+        Ornamentals
     </title>
 
     <meta name="keywords" content="">
@@ -51,6 +51,7 @@
             </div>
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
+
                     @if (!HttpContext.Current.User.Identity.IsAuthenticated)
                     {
                         <li>
@@ -81,6 +82,8 @@
                         }
 
                     }
+
+
                     <!--
                         <li>
                             <a href="#" data-toggle="modal" data-target="#login-modal">Inicia Sesión</a>
@@ -89,7 +92,7 @@
                             <a href="#" data-toggle="modal" data-target="#register-modal">Registrate</a>
                         </li>
                     -->
-                    
+
                 </ul>
             </div>
         </div>
@@ -137,21 +140,21 @@
                     <div class="modal-body">
                         <form action="@Url.Action("RegistrarCliente","Home")" method="post">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="email-modal" name="Nombres" placeholder="Nombres">
+                                <input type="text" class="form-control" id="nombres-modal" name="Nombres" placeholder="Nombres">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="email-modal" name="Apellidos" placeholder="Apellidos">
+                                <input type="text" class="form-control" id="apellidos-modal" name="Apellidos" placeholder="Apellidos">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="email-modal" name="Usuario" placeholder="Usuario">
+                                <input type="text" class="form-control" id="usuario-modal" name="Usuario" placeholder="Usuario">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password-modal" name="Clave" placeholder="Password">
+                                <input type="password" class="form-control" id="clave-modal" name="Clave" placeholder="Password">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="email-modal" name="Correo" placeholder="Email">
+                                <input type="text" class="form-control" id="correo-modal" name="Correo" placeholder="Email">
                             </div>
-                            
+
 
                             <p class="text-center">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i>Registarse</button>
@@ -206,9 +209,9 @@
                     <li class="dropdown yamm-fw" id="storeSection" onclick="activaOpcion('storeSection');">
                         <!--Url.Action("Index", "Store")-->
                         <a href="" onclick="irA('store');" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Tienda<b class="caret"></b></a>
-                         
+
                         <ul class="dropdown-menu">
-                        
+
                             <li>
                                 <div class="yamm-content">
                                     <div class="row">
@@ -256,7 +259,7 @@
                                                 <li>
                                                     <a href="@Url.Action("Index", "Store")">Para Jardín</a>
                                                 </li>
-                                                
+
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
@@ -274,7 +277,7 @@
                                                 <li>
                                                     <a href="@Url.Action("Index", "Store")">Semilla</a>
                                                 </li>
-                                               
+
                                             </ul>
                                         </div>
                                         <div class="col-sm-3">
@@ -308,12 +311,12 @@
                                 <!-- /.yamm-content-->
                             </li>
                         </ul>
-                        
+
                     </li>
 
                     <li class="dropdown yamm-fw" id="serviceSection">
                         <a href="" onclick="irA('service');" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Servicios <b class="caret"></b></a>
-                        
+
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="yamm-content">
@@ -367,9 +370,9 @@
                                                 <li>
                                                     <a href="@Url.Action("Index", "Service")">Casual</a>
                                                 </li>
-                                                
+
                                             </ul>
-                                            
+
                                         </div>
                                         <div class="col-sm-3">
                                             <h5>fitoterapeuta</h5>
@@ -385,7 +388,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        
+
                                         <!--<div class="col-sm-3">
                                             <div class="banner">
                                                 <a href="#">
@@ -398,7 +401,7 @@
                                                 </a>
                                             </div>
                                         </div>-->
-                                        
+
                                     </div>
                                 </div>
                                 <!-- /.yamm-content -->
@@ -513,19 +516,19 @@
             <div class="navbar-buttons">
                 <div class="navbar-collapse collapse right" id="basket-overview">
                     <div class="nav navbar-nav navbar-right">
-                        <div class="dropdown yamm-fw">
+                        <div class="dropdown yamm-fw" style="margin-bottom:0;">
                             @if (HttpContext.Current.User.Identity.IsAuthenticated)
                             {
-                               <form action="@Url.Action("Index", "Basket")">
-                                   <input type="hidden" name="id" value=""/>
-                                   <button href="" type="submit" onmouseover="Desplegar();" onmouseout="Ocultar();" class="btn btn-primary navbar-btn" >
-                                       <i class="fa fa-shopping-cart"></i>
-                                       &nbsp; cart<label id="nroProductosCarrito"></label>&nbsp; &nbsp;
-                                       <span class="hidden-sm"></span>
-                                       <label id="totalCompraCarrito"></label>
-                                   </button>
-                               </form>
-                                
+                                <form action="@Url.Action("Index", "Basket")" style="margin-bottom:0;">
+                                    <input type="hidden" name="id" value="" />
+                                    <button href="" type="submit" onmouseover="Desplegar();" onmouseout="Ocultar();" class="btn btn-primary navbar-btn">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        &nbsp; cart<label id="nroProductosCarrito"></label>&nbsp; &nbsp;
+                                        <span class="hidden-sm"></span>
+                                        <label id="totalCompraCarrito"></label>
+                                    </button>
+                                </form>
+
 
                             }
                             else
@@ -536,11 +539,11 @@
                                     <span class="hidden-sm"></span>
                                     <label id="totalCompraCarrito"></label>
                                 </a>
-                                
+
                             }
-                            
+
                         </div>
-                        <div id="despliegueDiv" style="display:none; width:400px; margin-top:0px;" class="dropdown-menu">
+                        <div id="despliegueDiv" style="display:none; width:400px; margin-top:-20px;" class="dropdown-menu" onmouseover="Desplegar();" onmouseout="Ocultar();">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -563,37 +566,37 @@
                                             <td>
                                                 <a href="#">White Blouse Armani</a>
                                             </td>
-                                            
+
                                             <td>S/. 123.00</td>
                                         </tr>
                                         -->
-                                        
-                                        
+
+
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th colspan="1"></th>
                                             <th colspan="1"></th>
                                             <th colspan="2">Total</th>
-                                            <th colspan="1"><p id="totalCarrito"></p></th> 
+                                            <th colspan="1"><p id="totalCarrito"></p></th>
                                         </tr>
                                         <tr>
                                             <th colspan="2"></th>
                                             <th colspan="1"></th>
-                                            <th colspan="2"><button class="btn btn-danger">Realizar Pago</button></th>
+                                            <th colspan="2"><a class="btn btn-danger" href="@Url.Action("Index","Basket")">Realizar Pago</a></th>
                                         </tr>
                                     </tfoot>
                                 </table>
 
                             </div>
-                            
+
                         </div>
                     </div>
-                    
+
                 </div>
-                
-                
-                
+
+
+
 
                 <div class="navbar-collapse collapse right" id="search-not-mobile">
                     <button type="button" class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
@@ -648,7 +651,7 @@
                                 <a href="@Url.Action("Termcondition","Home")">Terminos y Condiciones</a>
                             </li>
                             <li>
-                                <a href="@Url.Action("Faq","Home")"">FAQ</a>
+                                <a href="@Url.Action("Faq","Home")" ">FAQ</a>
                             </li>
                             <li>
                                 <a href="contact.html">Contáctanos</a>
@@ -945,7 +948,7 @@
             $('#itemcarrito').html(html);
 
             $("#totalCompraCarrito,#totalCarrito").text('S/.' + totalFinal);
-            
+
             $("#subtotal").text('S/.' + totalFinal + '.00');
             var totalMonto = totalFinal + 10;
             $("#total").text('S/.' + totalMonto + '.00');

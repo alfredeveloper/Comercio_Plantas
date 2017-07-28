@@ -120,15 +120,15 @@
                 </div>
             </div>
 
-           
+
 
             <!-- *** MENUS AND FILTERS END *** -->
 
-            
+
         </div>
 
         <div class="col-md-9">
-            
+
             <div class="row" id="productMain">
                 @foreach (var item in Model)
                 {
@@ -159,9 +159,9 @@
                             <!--
                             <p class="goToDescription">
                                 <a href="#details" class="scroll-to">Ver Detalles</a>
-                            </p>  
+                            </p>
                             -->
-                            
+
                             <p class="price">S/.@item.Precio</p>
 
                             <p class="text-center buttons">
@@ -178,22 +178,22 @@
                                         </div>
                                         <div class="modal-body">
                                             @*
-                                                            <form action="@Url.Action("Login","Home")" method="post">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="email-modal" placeholder="Usuario" name="usuario">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="password-modal" placeholder="Contraseña" name="clave">
-                            </div>
+                                                                                    <form action="@Url.Action("Login","Home")" method="post">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="email-modal" placeholder="Usuario" name="usuario">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="password" class="form-control" id="password-modal" placeholder="Contraseña" name="clave">
+                                                    </div>
 
-                            <p class="text-center">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i>Log in</button>
-                            </p>
+                                                    <p class="text-center">
+                                                        <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i>Log in</button>
+                                                    </p>
 
-                        </form>
+                                                </form>
 
-                        <p class="text-center text-muted">¿Aún no estás registrado?</p>
-                        <p class="text-center text-muted"><a href="#register-modal"><strong>Registrate ahora</strong></a>! Es fácil y en menos de 1 minuto. Te daremos acceso a descuentos especiales y mucho más!!</p>
+                                                <p class="text-center text-muted">¿Aún no estás registrado?</p>
+                                                <p class="text-center text-muted"><a href="#register-modal"><strong>Registrate ahora</strong></a>! Es fácil y en menos de 1 minuto. Te daremos acceso a descuentos especiales y mucho más!!</p>
 
                                             *@
                                             <p>Se Agrego un nuevo item al Carrito</p>
@@ -224,33 +224,35 @@
                         </div>
                     </div>
                 }
-                
+
 
             </div>
 
 
             <div class="box" id="details">
-                <p>
-                    <h4>Detalles del producto</h4>
-                <p>White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
-                <h4>Material</h4>
-                <ul>
-                    <li>Polyester</li>
-                    <li>Machine wash</li>
-                </ul>
-                <h4>Tamaño</h4>
-                <ul>
-                    <li>Regular fit</li>
-                    <li>The model (height 5'8" and chest 33") is wearing a size S</li>
-                </ul>
+                @*
+                        <p>
+                        <h4>Detalles del producto</h4>
+                    <p>White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
+                    <h4>Material</h4>
+                    <ul>
+                        <li>Polyester</li>
+                        <li>Machine wash</li>
+                    </ul>
+                    <h4>Tamaño</h4>
+                    <ul>
+                        <li>Regular fit</li>
+                        <li>The model (height 5'8" and chest 33") is wearing a size S</li>
+                    </ul>
 
-                <blockquote>
-                    <p>
-                        <em>Define style this season with Armani's new range of trendy tops, crafted with intricate details. Create a chic statement look by teaming this lace number with skinny jeans and pumps.</em>
-                    </p>
-                </blockquote>
+                    <blockquote>
+                        <p>
+                            <em>Define style this season with Armani's new range of trendy tops, crafted with intricate details. Create a chic statement look by teaming this lace number with skinny jeans and pumps.</em>
+                        </p>
+                    </blockquote>
+                *@
 
-                <hr>
+
                 <div class="social">
                     <h4>Comparte con tus amigos</h4>
                     <p>

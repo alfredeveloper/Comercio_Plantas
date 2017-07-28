@@ -19,7 +19,7 @@
         <div class="col-md-9" id="checkout">
 
             <div class="box">
-                <form method="post" action="@Url.Action("Checkout2","Basket")">
+                <form method="post" action="@Url.Action("ActualizarCliente","Basket")">
                     <h1>Address</h1>
                     <ul class="nav nav-pills nav-justified">
                         <li class="active">
@@ -41,13 +41,14 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="firstname">Nombres</label>
-                                    <input type="text" class="form-control" id="firstname" value="@Model.Nombres">
+                                    <input type="text" class="form-control" id="firstname" name="Nombres" value="@Model.Nombres">
+                                    <input type="hidden" value="@Model.ClienteId" name="ClienteId"/>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="lastname">Apellidos</label>
-                                    <input type="text" class="form-control" id="lastname" value="@Model.Apellidos">
+                                    <input type="text" class="form-control" id="lastname" name="Apellidos" value="@Model.Apellidos">
                                 </div>
                             </div>
                         </div>
@@ -64,20 +65,20 @@
                             -->
                             <div class="col-sm-6 col-md-3">
                                 <div class="form-group">
-                                    <label for="state">Provincia</label>
-                                    <select class="form-control" id="state"></select>
+                                    <label for="state">Departamento</label>
+                                    <select class="form-control" id="departamento" onchange="SetProvincia();"></select>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-3">
                                 <div class="form-group">
-                                    <label for="country">Distrito</label>
-                                    <select class="form-control" id="country"></select>
+                                    <label for="country">Provincia</label>
+                                    <select class="form-control" id="provincia"></select>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="street">Dirección</label>
-                                    <input type="text" class="form-control" id="street" value="@Model.Direccion">
+                                    <input type="text" class="form-control" id="street" name="Direccion" value="@Model.Direccion">
                                 </div>
                             </div>
                         </div>
@@ -98,17 +99,17 @@
                                 </div>
                             </div>
                             -->
-                              
+
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="text" class="form-control" id="email" value="@Model.Correo">
+                                    <input type="text" class="form-control" id="email" name="Correo" value="@Model.Correo">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="phone">Teléfono</label>
-                                    <input type="text" class="form-control" id="phone" value="@Model.Celular">
+                                    <input type="text" class="form-control" id="phone" name="Celular" value="@Model.Celular">
                                 </div>
                             </div>
 
@@ -193,10 +194,13 @@
     </div>
     <!-- /.container -->
 </div>
+
+
 <script src="~/js/jquery-1.11.0.min.js"></script>
+<script src="~/js/ornamentals/ornamentals.ubigeo.js"></script>
 <script>
     $(document).ready(function () {
-        
+
         document.getElementById('content').onload = function(){
             $("#content").animate({ 'top': '+=500px' }, 10);
         }
