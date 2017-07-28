@@ -516,12 +516,16 @@
                         <div class="dropdown yamm-fw">
                             @if (HttpContext.Current.User.Identity.IsAuthenticated)
                             {
-                                <a href="@Url.Action("Index", "Basket")" onmouseover="Desplegar();" onmouseout="Ocultar();" class="btn btn-primary navbar-btn">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    &nbsp; cart<label id="nroProductosCarrito"></label>&nbsp; &nbsp;
-                                    <span class="hidden-sm"></span>
-                                    <label id="totalCompraCarrito"></label>
-                                </a>
+                               <form action="@Url.Action("Index", "Basket")">
+                                   <input type="hidden" name="id" value=""/>
+                                   <button href="" type="submit" onmouseover="Desplegar();" onmouseout="Ocultar();" class="btn btn-primary navbar-btn" >
+                                       <i class="fa fa-shopping-cart"></i>
+                                       &nbsp; cart<label id="nroProductosCarrito"></label>&nbsp; &nbsp;
+                                       <span class="hidden-sm"></span>
+                                       <label id="totalCompraCarrito"></label>
+                                   </button>
+                               </form>
+                                
 
                             }
                             else
@@ -536,7 +540,7 @@
                             }
                             
                         </div>
-                        <div id="despliegueDiv" style="display:none; width:400px;" class="dropdown-menu">
+                        <div id="despliegueDiv" style="display:none; width:400px; margin-top:0px;" class="dropdown-menu">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -855,8 +859,14 @@
 
             CargaCarrito(productos);
 
+            //setTimeout(Temporizador(), 2000);
         }
-
+        /*
+        function Temporizador() {
+            $("#modal").trigger('click');
+                $('#carrito-modal').css("display", "none");
+        }
+        */
         function EliminarDeCarrito(productoid) {
             var carrito = localStorage.getItem("carrito");
             var productos = JSON.parse(carrito);

@@ -92,20 +92,29 @@
                             <div class="flip-container">
                                 <div class="flipper">
                                     <div class="front">
-                                        <a href="@Url.Action("Product", "Store")">
-                                            <img src="~/ImgProductos/@img" alt="" class="img-responsive">
-                                        </a>
+                                        <form action="@Url.Action("Product","Store")">
+                                            <input type="hidden" name="id" value="@item.ProductoId" />
+                                            <button style="padding:0px; border:hidden" type="submit">
+                                                <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+                                            </button>
+                                        </form>
                                     </div>
                                     <div class="back">
-                                        <a href="@Url.Action("Product", "Store")">
-                                            <img src="~/ImgProductos/@img" alt="" class="img-responsive">
-                                        </a>
+                                        <form action="@Url.Action("Product","Store")">
+                                            <input type="hidden" name="id" value="@item.ProductoId" />
+                                            <button style="padding:0px; border:hidden" type="submit">
+                                                <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                            <a href="@Url.Action("Product", "Store")" class="invisible">
-                                <img src="~/ImgProductos/@img" alt="" class="img-responsive">
-                            </a>
+                            <form action="@Url.Action("Product","Store")">
+                                <input type="hidden" name="id" value="@item.ProductoId" />
+                                <button style="padding:0px; border:hidden" type="submit">
+                                    <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+                                </button>
+                            </form>
                             <div class="text">
                                 <h3><a href="@Url.Action("Product", "Store")">@item.Denominacion</a></h3>
                                 <p class="price">S/. @item.Precio</p>

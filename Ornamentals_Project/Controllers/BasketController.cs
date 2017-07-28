@@ -10,9 +10,13 @@ namespace Ornamentals_Project.Controllers
     {
         private Models.Ornamentals_dbEntities bd = new Models.Ornamentals_dbEntities();
         // GET: Basket
-        public ActionResult Index()
+        public ActionResult Index(string id = "")
         {
-            return View();
+            var productos = bd.Producto
+                .Where(x => x.Descripcion.Contains(id))
+                .Take(3)
+                .ToList();
+            return View(productos);
         }
         // GET: Checkout1
         public ActionResult Checkout1()
