@@ -91,7 +91,7 @@
                         </div>
                         <form method="post">
                             <div class="pull-right">
-                                <button id="btnConfirmar"  type="submit" class="btn btn-primary">
+                                <button id="btnConfirmar" type="submit" class="btn btn-primary">
                                     Confirmar Compra<i class="fa fa-chevron-right"></i>
                                 </button>
                             </div>
@@ -182,33 +182,40 @@
 <script src="~/js/ornamentals/enlaces.js"></script>
 <script src="~/js/ornamentals/ornamentals.animation.js"></script>
 <script>
-        $(function () {
-            var carrito = localStorage.getItem("carrito");
-            var productos = [];
-            if (carrito != null) {
-                productos = JSON.parse(carrito);
-                CargarProductos(productos);
-            }
-        });
-    
-        $("#btnConfirmar").click(function () {
-            $("#DivDescuento").css("display", "none");
-            $("#Descuento").text(""); 
-            $("#Cupon").val("");
-            $.ajax({
-                type: 'POST',
-                dataType: 'json',
-                contentType: "application/json; charset=utf-8",
-                url: '@Url.Action("RealizarPedido","Basket")',
-                data: carrito,
-                success: function () {
-                    localStorage.removeItem("carrito");
-                    window.location = '@Url.Action("Index","Store")';
+    $(function () {
+        var carrito = localStorage.getItem("carrito");
+        var productos = [];
+        if (carrito != null) {
+            productos = JSON.parse(carrito);
+            CargarProductos(productos);
+        }
+    });
+
+    $("#btnConfirmar").click(function () {
+        $("#DivDescuento").css("display", "none");
+        $("#Descuento").text("");
+        $("#Cupon").val("");
+        var carrito = localStorage.getItem("carrito");
+        var productos = [];
+        if (carrito != null) {
+            productos = JSON.parse(carrito);
+        }
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            url: '@Url.Action("RealizarPedido","Basket")',
+            data: carrito,
+            success: function () {
+                alert("Venta Realizada");
+                localStorage.removeItem("carrito");
+                @*window.location = '@Url.Action("Index","Store")';*@
                 }
             });
+        var a = 0;
+    });
 
-        });
-    
+
     @*
         function LimpiarLocalStorage() {
         $.ajax({
@@ -226,37 +233,37 @@
     *@
 
 
-        function CargarProductos(productos) {
-            var html = '';
-            var total = 0;
-            var totalFinal = 0;
+                function CargarProductos(productos) {
+                    var html = '';
+                    var total = 0;
+                    var totalFinal = 0;
 
-            $.each(productos, function () {
-                totalFinal += this.Precio * this.Cantidad;
-                total = this.Precio * this.Cantidad;
-                html += '   <tr>'+
-                '                <td>'+
-                '                    <a href="#">'+
-                '                        <img src="/ImgProductos/'+this.Imagen+'" alt="White Blouse Armani"style="height:50px; width:50px;">'+
-                '                    </a>' +
-                '                </td>' +
-                '                <td>' +
-                '                    <a href="#">' + this.Denominacion + '</a>' +
-                '                </td>' +
-                '                <td>' +
-                '                    <label>' + this.Cantidad + '</label>' +
-                '                </td>' +
-                '                <td>S/. ' + this.Precio + '</td>' +
-                '                <td>S/. 0.00</td>' +
-                '                <td>' +total+
-                '                </td>'+
-                '                <td hidden><a href="#"><i class="fa fa-trash-o"></i></a></td>'
-                '            </tr>'
-            });
-            $('#itemcarrito3').html(html);
+                    $.each(productos, function () {
+                        totalFinal += this.Precio * this.Cantidad;
+                        total = this.Precio * this.Cantidad;
+                        html += '   <tr>'+
+                        '                <td>'+
+                        '                    <a href="#">'+
+                        '                        <img src="/ImgProductos/'+this.Imagen+'" alt="White Blouse Armani"style="height:50px; width:50px;">'+
+                        '                    </a>' +
+                        '                </td>' +
+                        '                <td>' +
+                        '                    <a href="#">' + this.Denominacion + '</a>' +
+                        '                </td>' +
+                        '                <td>' +
+                        '                    <label>' + this.Cantidad + '</label>' +
+                        '                </td>' +
+                        '                <td>S/. ' + this.Precio + '</td>' +
+                        '                <td>S/. 0.00</td>' +
+                        '                <td>' +total+
+                        '                </td>'+
+                        '                <td hidden><a href="#"><i class="fa fa-trash-o"></i></a></td>'
+                        '            </tr>'
+                    });
+                    $('#itemcarrito3').html(html);
 
-            $("#totalCompra").text('S/.' + totalFinal);
-        }
+                    $("#totalCompra").text('S/.' + totalFinal);
+                }
 
-        
+
 </script>

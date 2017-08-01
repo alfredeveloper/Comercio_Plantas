@@ -92,7 +92,7 @@ namespace Ornamentals_Project.Controllers
                 bd.SaveChanges();
             }
 
-            return Json(true, JsonRequestBehavior.AllowGet);
+            return Json(true/*, JsonRequestBehavior.AllowGet*/);
         }
 
         public class Pedidos
