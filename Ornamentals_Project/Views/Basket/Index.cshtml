@@ -73,7 +73,7 @@
                         </div>
                         <div class="pull-right">
                             <a class="btn btn-default" onclick="ActualizarCarrito();"><i class="fa fa-refresh"></i> Actualizar </a>
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" onclick="irACheckout2()">
                                 Continuar <i class="fa fa-chevron-right"></i>
                             </button>
                         </div>
@@ -200,12 +200,15 @@
 </div>
 <script src="~/js/jquery-1.11.0.min.js"></script>
 <script src="~/js/bootstrap.min.js"></script>
-<script src="~/js/jquery.cookie.js"></script>
-<script src="~/js/waypoints.min.js"></script>
-<script src="~/js/modernizr.js"></script>
-<script src="~/js/bootstrap-hover-dropdown.js"></script>
-<script src="~/js/owl.carousel.min.js"></script>
-<script src="~/js/front.js"></script>
+@*
+        <script src="~/js/jquery.cookie.js"></script>
+    <script src="~/js/waypoints.min.js"></script>
+    <script src="~/js/modernizr.js"></script>
+    <script src="~/js/bootstrap-hover-dropdown.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/front.js"></script>
+*@
+
 <!--MY SCRIPTS-->
 <script src="~/js/ornamentals/enlaces.js"></script>
 <script src="~/js/ornamentals/ornamentals.animation.js"></script>
@@ -217,11 +220,16 @@
                 productos = JSON.parse(carrito);
                 CargarProductos(productos);
             }
-            var cantItems = (JSON.parse(localStorage.getItem("carrito"))).length;
-            $("#CantItems").text(cantItems);
-            
+            if (localStorage.getItem("carrito") != null) {
+                var cantItems = (JSON.parse(localStorage.getItem("carrito"))).length;
+                $("#CantItems").text(cantItems);
+            } else {
+                $("#CantItems").text(0);
+            }
+
+
         });
-        
+
         function CargarProductos(productos) {
             var html = '';
             var total = 0;
@@ -251,8 +259,15 @@
             $('#itemcarrito2').html(html);
 
             $("#totalCompra").text('S/.' + totalFinal);
-            
-            
+
+
+
+        }
+
+        function irACheckout2() {
+            if($("#CantItems").text()=="0"){
+                window.location = '@Url.Action("Checkout1","Basket")';
+            }
 
         }
 </script>

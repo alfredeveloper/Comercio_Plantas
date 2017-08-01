@@ -127,6 +127,10 @@
                                 <td>Impuestos</td>
                                 <th>S/.5.00</th>
                             </tr>
+                            <tr hidden id="DivDescuento">
+                                <td>Descuento</td>
+                                <th id="Descuento" style="text-align:right;"></th>
+                            </tr>
                             <tr class="Total">
                                 <td>Total</td>
                                 <th id="total"></th>
@@ -143,19 +147,18 @@
                     <h4>Código de Cupón</h4>
                 </div>
                 <p class="text-muted">Si tienes un código de cupón, ingresa en el cuadro de abajo.</p>
-                <form>
                     <div class="input-group">
 
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" id="Cupon">
 
                         <span class="input-group-btn">
 
-                            <button class="btn btn-primary" type="button"><i class="fa fa-gift"></i></button>
+                            <button class="btn btn-primary" type="button" onclick="AplicarCupon();"><i class="fa fa-gift"></i></button>
 
                         </span>
                     </div>
                     <!-- /input-group -->
-                </form>
+
             </div>
 
         </div>
@@ -166,12 +169,15 @@
 </div>
 <script src="~/js/jquery-1.11.0.min.js"></script>
 <script src="~/js/bootstrap.min.js"></script>
-<script src="~/js/jquery.cookie.js"></script>
-<script src="~/js/waypoints.min.js"></script>
-<script src="~/js/modernizr.js"></script>
-<script src="~/js/bootstrap-hover-dropdown.js"></script>
-<script src="~/js/owl.carousel.min.js"></script>
-<script src="~/js/front.js"></script>
+@*
+        <script src="~/js/jquery.cookie.js"></script>
+    <script src="~/js/waypoints.min.js"></script>
+    <script src="~/js/modernizr.js"></script>
+    <script src="~/js/bootstrap-hover-dropdown.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/front.js"></script>
+*@
+
 <!--MY SCRIPTS-->
 <script src="~/js/ornamentals/enlaces.js"></script>
 <script src="~/js/ornamentals/ornamentals.animation.js"></script>
@@ -186,7 +192,9 @@
         });
     
         $("#btnConfirmar").click(function () {
-            
+            $("#DivDescuento").css("display", "none");
+            $("#Descuento").text(""); 
+            $("#Cupon").val("");
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
@@ -249,4 +257,6 @@
 
             $("#totalCompra").text('S/.' + totalFinal);
         }
+
+        
 </script>

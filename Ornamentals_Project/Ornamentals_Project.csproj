@@ -149,6 +149,7 @@
     <Content Include="css\style.pink.css" />
     <Content Include="css\style.violet.css" />
     <Content Include="Global.asax" />
+    <Content Include="img\AccountsTarget.jpg" />
     <Content Include="img\AjaxLoader.gif" />
     <Content Include="img\banner.jpg" />
     <Content Include="img\banner2.jpg" />
@@ -157,6 +158,7 @@
     <Content Include="img\blog-avatar2.jpg" />
     <Content Include="img\blog.jpg" />
     <Content Include="img\blog2.jpg" />
+    <Content Include="img\buttons\paypal.gif" />
     <Content Include="img\detailbig1.jpg" />
     <Content Include="img\detailbig2.jpg" />
     <Content Include="img\detailbig3.jpg" />

@@ -907,6 +907,8 @@
 
         }
 
+        var totalBruto = 0;
+
         function CargaCarrito(productos) {
             var html = '';
             var total = 0;
@@ -952,6 +954,25 @@
             $("#subtotal").text('S/.' + totalFinal + '.00');
             var totalMonto = totalFinal + 10;
             $("#total").text('S/.' + totalMonto + '.00');
+            totalBruto = totalMonto;
+        }
+
+
+        function AplicarCupon() {
+            if ($("#Cupon").val() == "A345DD") {
+                MostrarDescuento();
+            } else if ($("#Cupon").val() == "A345RR") {
+                MostrarDescuento();
+            } else { }
+
+        }
+
+        function MostrarDescuento(){
+            alert("Descuento de 10 Soles");
+            $("#DivDescuento").prop("hidden",false);
+            var totalNeto = totalBruto - 10;
+            $("#Descuento").text("S/.10.00");
+            $("#total").text('S/.' + totalNeto + '.00');
         }
 
     </script>

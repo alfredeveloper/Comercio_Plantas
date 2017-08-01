@@ -42,6 +42,7 @@ namespace Ornamentals_Project.Controllers
         }
         public ActionResult ActualizarCliente([Bind(Include = "ClienteId,Nombres,Apellidos,Correo,Celular,Direccion")] Models.Cliente c)
         {
+            
             if (ModelState.IsValid)
             {
                 var dato = bd.Cliente.Find(c.ClienteId);
