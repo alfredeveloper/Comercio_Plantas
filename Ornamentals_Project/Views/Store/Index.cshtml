@@ -348,12 +348,10 @@
                                 <form class="navbar-form" role="search" action="@Url.Action("Product","Store")">
                                     <p class="buttons">
                                         <input type="hidden" name="id" class="form-control" value="@item.ProductoId">
-                                        
+                                        <input type="hidden" value="@item.Existencias" name="Existencias" id="@item.ProductoId"/>
                                         <span class="input-group-btn">
                                             <button type="submit" class="btn btn-primary">Ver Detalles</button>
                                         </span>
-                                        
-                                        
                                     </p>
                                 </form>
                                 <p class="buttons">
@@ -361,7 +359,21 @@
                                     
                                     <a onclick="AgregarCarrito(@item.ProductoId, '@item.Denominacion', '@img', @item.Precio)" class="btn btn-primary" data-toggle="modal" data-target="#carrito-modal"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
                                 </p>
+                                
                             </div>
+                            <div class="ribbon sale" id="@item.ProductoId" style="display:none;">
+                                <div class="theribbon" style="background-color:coral; width:100px;">AGOTADO</div>
+                                <div class="ribbon-background" style="background-color:coral"></div>
+                            </div>
+                            <!-- /.ribbon -->
+                            <!--
+                                <div class="ribbon new">
+                                    <div class="theribbon">AGOTADO</div>
+                                    <div class="ribbon-background"></div>
+                                </div>
+                            -->
+                            
+                            <!-- /.ribbon -->
                             <!-- /.text -->
                         </div>
                         <!-- /.product -->

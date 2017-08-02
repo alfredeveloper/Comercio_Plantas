@@ -835,6 +835,19 @@
                 productos = JSON.parse(carrito);
                 CargaCarrito(productos);
             }
+
+            //verificar existencia de productos
+            var ArrayExistencias = [];
+            ArrayExistencias = $("input[name='Existencias']");
+            for (var i = 0; i < ArrayExistencias.length; i++) {
+                var DivIdExistencia = "div[id^='" + ArrayExistencias[i].id+"']";
+                if (ArrayExistencias[i].value ==0) {
+                    $(DivIdExistencia).css("display", "block");
+                }
+                
+                
+            }
+            
         });
 
         function AgregarCarrito(productoid, denominacion, imagen, precio) {
@@ -974,6 +987,8 @@
             $("#Descuento").text("S/.10.00");
             $("#total").text('S/.' + totalNeto + '.00');
         }
+
+
 
     </script>
 
