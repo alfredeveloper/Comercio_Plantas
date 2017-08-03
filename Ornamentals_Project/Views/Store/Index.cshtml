@@ -357,7 +357,7 @@
                                 <p class="buttons">
                                     @*<a href="@Url.Action("Product", "Store")" class="btn btn-default">Ver Detalles</a>*@
                                     
-                                    <a onclick="AgregarCarrito(@item.ProductoId, '@item.Denominacion', '@img', @item.Precio)" class="btn btn-primary" data-toggle="modal" data-target="#carrito-modal"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
+                                    <a id="@item.ProductoId" onclick="AgregarCarrito(@item.ProductoId, '@item.Denominacion', '@img', @item.Precio, @item.Existencias)" class="btn btn-primary" data-toggle="modal" data-target="#carrito-modal" ><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
                                 </p>
                                 
                             </div>
@@ -386,7 +386,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="BtnInfoCarrito">&times;</button>
-                                <h4 class="modal-title" id="Login">Nuevo Item en Carrito</h4>
+                                <h4 class="modal-title" id="MsjCart">Nuevo Item en Carrito</h4>
                             </div>
                             <div class="modal-body">
                                                                 @*
@@ -408,7 +408,7 @@
         <p class="text-center text-muted"><a href="#register-modal"><strong>Registrate ahora</strong></a>! Es fácil y en menos de 1 minuto. Te daremos acceso a descuentos especiales y mucho más!!</p>
 
                                                                 *@
-                                <p>Se Agrego un nuevo item al Carrito</p>
+                                <p id="MsjCarrito">Se Agrego un nuevo item al Carrito</p>
 
                             </div>
                         </div>

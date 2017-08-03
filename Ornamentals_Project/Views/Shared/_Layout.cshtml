@@ -840,9 +840,13 @@
             var ArrayExistencias = [];
             ArrayExistencias = $("input[name='Existencias']");
             for (var i = 0; i < ArrayExistencias.length; i++) {
-                var DivIdExistencia = "div[id^='" + ArrayExistencias[i].id+"']";
+                var DivIdExistencia = "div[id='" + ArrayExistencias[i].id + "']";
+                var LinkIdExistencia = "a[id='" + ArrayExistencias[i].id + "']";
                 if (ArrayExistencias[i].value ==0) {
                     $(DivIdExistencia).css("display", "block");
+                    console.log(ArrayExistencias[i].value);
+                    $(LinkIdExistencia)[0].style.pointerEvents = "none";//("pointer-events", "none");
+                    $(LinkIdExistencia)[0].style.cursor = "default"; //css("cursor", "default");
                 }
                 
                 
@@ -850,7 +854,7 @@
             
         });
 
-        function AgregarCarrito(productoid, denominacion, imagen, precio) {
+        function AgregarCarrito(productoid, denominacion, imagen, precio, existencia) {
             var carrito = localStorage.getItem("carrito");
             var productos = [];
             if (carrito != null) {
@@ -867,7 +871,15 @@
             if (!itemActual) {
                 productos.push({ ProductoId: productoid, Denominacion: denominacion, Precio: precio, Cantidad: 1, Imagen: imagen });
             } else {
-                itemActual.Cantidad++;
+                if (existencia <= itemActual.Cantidad) {
+                    $("#MsjCart").text("Atencion");
+                    $("#MsjCarrito").text("Stock en 0 No Puede Agregar Mas Productos Al Carrito");
+                } else {
+                    $("#MsjCart").text("Nuevo Item en Carrito");
+                    $("#MsjCarrito").text("Se Agrego un nuevo item al Carrito");
+                    itemActual.Cantidad++;
+                }
+                
             }
 
             var jsonStr = JSON.stringify(productos);

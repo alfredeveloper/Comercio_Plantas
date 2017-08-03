@@ -82,6 +82,13 @@ namespace Ornamentals_Project.Controllers
 
             foreach (var item in p)
             {
+                if (ModelState.IsValid)
+                {
+                    var dato = bd.Producto.Find(item.ProductoId);
+                    dato.Existencias = dato.Existencias - item.Cantidad;
+                    bd.Entry(dato).State = EntityState.Modified;
+                    bd.SaveChanges();
+                }
                 var pdet = new Models.PedidoDetalle
                 {
                     PedidoId = pcab.PedidoId,
@@ -92,7 +99,7 @@ namespace Ornamentals_Project.Controllers
                 bd.SaveChanges();
             }
 
-            return Json(true/*, JsonRequestBehavior.AllowGet*/);
+            return Json(true, JsonRequestBehavior.AllowGet);  
         }
 
         public class Pedidos

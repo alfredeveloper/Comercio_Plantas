@@ -140,16 +140,24 @@
                             <img src="~/ImgProductos/@img" alt="" class="img-responsive">
                         </div>
 
-                        <div class="ribbon sale">
-                            <div class="theribbon">SALE</div>
-                            <div class="ribbon-background"></div>
+                        <div class="ribbon sale" id="DivTagAgotado" style="display:none;">
+                            <div class="theribbon" style="background-color:coral; width:100px;">AGOTADO</div>
+                            <div class="ribbon-background" style="background-color:coral"></div>
                         </div>
                         <!-- /.ribbon -->
-
-                        <div class="ribbon new">
+                        <!--
+                            <div class="ribbon new">
                             <div class="theribbon">NEW</div>
                             <div class="ribbon-background"></div>
                         </div>
+                        -->
+                        <!--
+                            <div class="ribbon new">
+                            <div class="theribbon">NEW</div>
+                            <div class="ribbon-background"></div>
+                        </div>
+                        -->
+                        
                         <!-- /.ribbon -->
 
                     </div>
@@ -163,9 +171,9 @@
                             -->
 
                             <p class="price">S/.@item.Precio</p>
-
+                            <input type="hidden" value="@item.Existencias" id="ExistenciaU" name="ExistenciaU"/>
                             <p class="text-center buttons">
-                                <a onclick="AgregarCarrito(@item.ProductoId, '@item.Denominacion', '@img', @item.Precio)" class="btn btn-primary" data-toggle="modal" data-target="#carrito-modal"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
+                                <a id ="BtnAddCarrito" onclick="AgregarCarrito(@item.ProductoId, '@item.Denominacion', '@img', @item.Precio, @item.Existencias)" class="btn btn-primary" data-toggle="modal" data-target="#carrito-modal"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>
                                 <a href="@Url.Action("Index","Basket")" class="btn btn-default"><i class="fa fa-heart"></i> Añadir a lista de deseos</a>
                             </p>
                             <div class="modal fade" id="carrito-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
@@ -454,3 +462,15 @@
     </div>
     <!-- /.container -->
 </div>
+<script src="~/js/jquery-1.11.0.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script>
+    var Existencia = $("#ExistenciaU").val();
+    if (Existencia == 0) {
+        //$(DivIdExistencia).css("display", "block");
+        
+        $("#DivTagAgotado").css("display", "block");
+        $("#BtnAddCarrito").css("pointerEvents","none");//("pointer-events", "none");
+        $("#BtnAddCarrito").css("cursor", "default"); //css("cursor", "default");
+    }
+</script>

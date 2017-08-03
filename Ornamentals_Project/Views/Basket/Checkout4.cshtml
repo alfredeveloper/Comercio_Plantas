@@ -196,10 +196,7 @@
         $("#Descuento").text("");
         $("#Cupon").val("");
         var carrito = localStorage.getItem("carrito");
-        var productos = [];
-        if (carrito != null) {
-            productos = JSON.parse(carrito);
-        }
+        
         $.ajax({
             type: 'POST',
             dataType: 'json',
@@ -210,9 +207,11 @@
                 alert("Venta Realizada");
                 localStorage.removeItem("carrito");
                 window.location = '@Url.Action("Index","Store")';
-                }
+            },
+            error: function (result) {
+                alert("ERROR " + result.status + ' ' + result.statusText);
+            }
             });
-        var a = 0;
     });
 
 
