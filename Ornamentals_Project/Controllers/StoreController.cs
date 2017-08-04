@@ -48,10 +48,27 @@ namespace Ornamentals_Project.Controllers
             return View(producto);
         }
 
-        /*public ActionResult Category(string id = "")
+        public PartialViewResult ProductosPrecios(string id="")
+        {
+            return PartialView(db.Producto
+                .Where(x => x.Descripcion.Contains(id))
+                .Take(3)
+                .ToList());
+        }
+
+        public PartialViewResult ProductosDestacado(string id = "")
+        {
+            
+            return PartialView(db.Producto
+                .Where(x => x.Descripcion.Contains(id))
+                .Take(3)
+                .ToList());
+        }
+        /*
+        public ActionResult Category(string id = )
         {
            
-            return 
+            return View(producto);
         }*/
     }
 }

@@ -1,0 +1,33 @@
+﻿@model List<Ornamentals_Project.Models.Producto>
+
+@foreach (var item in Model)
+{
+    var imagen = @item.ProductoImagen.FirstOrDefault();
+    string img = imagen == null ? "no_disponible.jpg" : imagen.Imagen;
+    <div class="col-md-3 col-sm-6">
+        <div class="product same-height">
+            <div class="flip-container">
+                <div class="flipper">
+                    <div class="front">
+                        <a href="@Url.Action("Product","Store")">
+                            <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+                        </a>
+                    </div>
+                    <div class="back">
+                        <a href="@Url.Action("Product","Store")">
+                            <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action("Product","Store")" class="invisible">
+                <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+            </a>
+            <div class="text">
+                <h3>@item.Denominacion</h3>
+                <p class="price">S/. @item.Precio .00</p>
+            </div>
+        </div>
+        <!-- /.product -->
+    </div>
+}

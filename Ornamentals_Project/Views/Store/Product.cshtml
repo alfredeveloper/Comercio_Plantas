@@ -278,89 +278,43 @@
                         <h3>También te pueden interesar estos productos</h3>
                     </div>
                 </div>
+                <div id="producto-destacado"></div> 
+                @*
 
-                <div class="col-md-3 col-sm-6">
-                    <div class="product same-height">
-                        <div class="flip-container">
-                            <div class="flipper">
-                                <div class="front">
-                                    <a href="@Url.Action("Product","Store")">
-                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                                <div class="back">
-                                    <a href="@Url.Action("Product","Store")">
-                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                            </div>
+     @foreach (var item in Model)
+    {
+        var imagen = @item.ProductoImagen.FirstOrDefault();
+        string img = imagen == null ? "no_disponible.jpg" : imagen.Imagen;
+        <div class="col-md-3 col-sm-6">
+            <div class="product same-height">
+                <div class="flip-container">
+                    <div class="flipper">
+                        <div class="front">
+                            <a href="@Url.Action("Product","Store")">
+                                <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                            </a>
                         </div>
-                        <a href="@Url.Action("Product","Store")" class="invisible">
-                            <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                        </a>
-                        <div class="text">
-                            <h3>Arbol Tropical</h3>
-                            <p class="price">S/.50</p>
+                        <div class="back">
+                            <a href="@Url.Action("Product","Store")">
+                                <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                            </a>
                         </div>
                     </div>
-                    <!-- /.product -->
                 </div>
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="product same-height">
-                        <div class="flip-container">
-                            <div class="flipper">
-                                <div class="front">
-                                    <a href="@Url.Action("Product","Store")">
-                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                                <div class="back">
-                                    <a href="@Url.Action("Product","Store")">
-                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="@Url.Action("Product","Store")" class="invisible">
-                            <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                        </a>
-                        <div class="text">
-                            <h3>Arbol Tropical</h3>
-                            <p class="price">S/.50</p>
-                        </div>
-                    </div>
-                    <!-- /.product -->
+                <a href="@Url.Action("Product","Store")" class="invisible">
+                    <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                </a>
+                <div class="text">
+                    <h3>Arbol Tropical</h3>
+                    <p class="price">S/.50</p>
                 </div>
+            </div>
+            <!-- /.product -->
+        </div>
+    }*@
+               
+                
 
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="product same-height">
-                        <div class="flip-container">
-                            <div class="flipper">
-                                <div class="front">
-                                    <a href="@Url.Action("Product","Store")">
-                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                                <div class="back">
-                                    <a href="@Url.Action("Product","Store")">
-                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="@Url.Action("Product","Store")" class="invisible">
-                            <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                        </a>
-                        <div class="text">
-                            <h3>Arbol Tropical</h3>
-                            <p class="price">S/.50</p>
-
-                        </div>
-                    </div>
-                    <!-- /.product -->
-                </div>
 
             </div>
 
@@ -370,90 +324,44 @@
                         <h3>Productos vistos recientemente</h3>
                     </div>
                 </div>
-
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="product same-height">
-                        <div class="flip-container">
-                            <div class="flipper">
-                                <div class="front">
-                                    <a href="@Url.Action("Product","Store")">
-                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                                <div class="back">
-                                    <a href="@Url.Action("Product","Store")">
-                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                                    </a>
-                                </div>
+                <div id="producto-precio"></div>
+                                @*
+             @foreach (var item in Model)
+        {
+            var imagen = @item.ProductoImagen.FirstOrDefault();
+            string img = imagen == null ? "no_disponible.jpg" : imagen.Imagen;
+            <div class="col-md-3 col-sm-6">
+                <div class="product same-height">
+                    <div class="flip-container">
+                        <div class="flipper">
+                            <div class="front">
+                                <a href="@Url.Action("Product","Store")">
+                                    <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                                </a>
+                            </div>
+                            <div class="back">
+                                <a href="@Url.Action("Product","Store")">
+                                    <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                                </a>
                             </div>
                         </div>
-                        <a href="@Url.Action("Product","Store")" class="invisible">
-                            <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                        </a>
-                        <div class="text">
-                            <h3>Arbol Tropical</h3>
-                            <p class="price">S/.50</p>
-                        </div>
                     </div>
-                    <!-- /.product -->
-                </div>
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="product same-height">
-                        <div class="flip-container">
-                            <div class="flipper">
-                                <div class="front">
-                                    <a href="@Url.Action("Product","Store")">
-                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                                <div class="back">
-                                    <a href="@Url.Action("Product","Store")">
-                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="@Url.Action("Product","Store")" class="invisible">
-                            <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                        </a>
-                        <div class="text">
-                            <h3>Arbol Tropical</h3>
-                            <p class="price">S/.50</p>
-                        </div>
+                    <a href="@Url.Action("Product","Store")" class="invisible">
+                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
+                    </a>
+                    <div class="text">
+                        <h3>Arbol Tropical</h3>
+                        <p class="price">S/.50</p>
                     </div>
-                    <!-- /.product -->
                 </div>
+                <!-- /.product -->
+            </div>
+        }
+                                *@
+               
+                
 
 
-                <div class="col-md-3 col-sm-6">
-                    <div class="product same-height">
-                        <div class="flip-container">
-                            <div class="flipper">
-                                <div class="front">
-                                    <a href="@Url.Action("Product","Store")">
-                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                                <div class="back">
-                                    <a href="@Url.Action("Product","Store")">
-                                        <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="@Url.Action("Product","Store")" class="invisible">
-                            <img src="~/img/planta-1.jpg" alt="" class="img-responsive">
-                        </a>
-                        <div class="text">
-                            <h3>Arbol Tropical</h3>
-                            <p class="price">S/.50</p>
-
-                        </div>
-                    </div>
-                    <!-- /.product -->
-                </div>
 
             </div>
 
@@ -468,9 +376,15 @@
     var Existencia = $("#ExistenciaU").val();
     if (Existencia == 0) {
         //$(DivIdExistencia).css("display", "block");
-        
+
         $("#DivTagAgotado").css("display", "block");
         $("#BtnAddCarrito").css("pointerEvents","none");//("pointer-events", "none");
         $("#BtnAddCarrito").css("cursor", "default"); //css("cursor", "default");
     }
+
+    function CargarAdjuntos() {  
+        $("#producto-precio").load("@Url.Content("~/Store/ProductosPrecios?id=''" )");
+        $("#producto-destacado").load("@Url.Content("~/Store/ProductosDestacado?id=''" )");
+    }
+    CargarAdjuntos();
 </script>

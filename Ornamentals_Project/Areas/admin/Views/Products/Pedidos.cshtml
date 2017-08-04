@@ -1,0 +1,64 @@
+﻿@model List<Ornamentals_Project.Models.Pedido>
+
+
+@{
+    ViewBag.Title = "Pedidos";
+}
+
+<h2>Pedidos</h2>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                Cliente
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Precio)*@
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Existencias)*@
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Activo)*@
+            </th>
+            <th>Acciones</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Precio)*@
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Existencias)*@
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Activo)*@
+                </td>
+                <td>
+                    @Html.ActionLink("Cancelado", "Edit"@*, new { id = item.ProductoId }*@) |
+                    @Html.ActionLink("Finalizado", "Details"@*, new { id = item.ProductoId }*@) |
+                    @Html.ActionLink("Detalles", "PedidoDetalles", new { id = item.PedidoId })
+                     
+                </td>
+            </tr>
+        }
+        </table>
+

@@ -176,6 +176,32 @@ namespace Ornamentals_Project.Areas.admin.Controllers
             return Json(rpt);
         }
 
+        #region Vista Pedidos
+        public ActionResult Pedidos()
+        {
+            var pedidos = db.Pedido.ToList();
+            return View(pedidos);
+        }
+        #endregion
+
+        #region Vista Pedido Detalles
+        public ActionResult PedidoDetalles(int id)
+        {
+            var pedidosDetalle = db.PedidoDetalle
+                .Where(x => x.PedidoId.Equals(id))
+                .ToList();
+            return View(pedidosDetalle);
+        }
+        #endregion
+        #region Vista Producto 
+        public ActionResult Producto(int id)
+        {
+            var producto = db.Producto
+                .Where(x => x.ProductoId.Equals(id))
+                .ToList();
+            return View(producto);
+        }
+        #endregion
 
     }
 }

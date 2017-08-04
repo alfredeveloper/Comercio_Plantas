@@ -307,6 +307,11 @@
     <Content Include="Views\Basket\Checkout2.cshtml" />
     <Content Include="Views\Basket\Checkout3.cshtml" />
     <Content Include="Views\Basket\Checkout4.cshtml" />
+    <Content Include="Views\Store\ProductosPrecios.cshtml" />
+    <Content Include="Views\Store\ProductosDestacado.cshtml" />
+    <Content Include="Areas\admin\Views\Products\Pedidos.cshtml" />
+    <Content Include="Areas\admin\Views\Products\PedidoDetalles.cshtml" />
+    <Content Include="Areas\admin\Views\Products\Producto.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

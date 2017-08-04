@@ -1,0 +1,32 @@
+﻿@model List<Ornamentals_Project.Models.Producto>
+@{
+    ViewBag.Title = "Producto";
+}
+
+<h2>Producto</h2>
+
+@foreach (var item in Model)
+{
+    var imagen = @item.ProductoImagen.FirstOrDefault();
+    string img = imagen == null ? "no_disponible.jpg" : imagen.Imagen;
+    <div class="col-sm-4">
+
+        <div id="mainImage">
+            <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+        </div>
+
+    </div>
+    <div class="col-sm-4">
+        <div class="box">
+            <h1 class="text-center">@item.Denominacion</h1>
+            <h3 class="price text-center">S/.@item.Precio</h3>
+            <input type="hidden" value="@item.Existencias" id="ExistenciaU" name="ExistenciaU" />
+        </div>
+        <div>
+            <button class="btn btn-danger" onclick="volver();">Volver</button>
+        </div>
+    </div>
+
+
+}
+
