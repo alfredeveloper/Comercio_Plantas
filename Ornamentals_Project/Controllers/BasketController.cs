@@ -15,7 +15,7 @@ namespace Ornamentals_Project.Controllers
         {
             var productos = bd.Producto
                 .Where(x => x.Descripcion.Contains(id))
-                .Take(3)
+                .Take(6)
                 .ToList();
             return View(productos);
         }
@@ -99,7 +99,7 @@ namespace Ornamentals_Project.Controllers
                 bd.SaveChanges();
             }
 
-            return Json(true, JsonRequestBehavior.AllowGet);  
+            return Json(true);  
         }
 
         public class Pedidos

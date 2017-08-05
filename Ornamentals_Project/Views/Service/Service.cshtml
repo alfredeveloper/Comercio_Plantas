@@ -320,7 +320,6 @@
             url: '@Url.Action("RealizarPedidoServicio", "Service")',
             data: jsonStr,
             success: function () {
-                alert("Servicio Confirmado");
                 window.location = '@Url.Action("Index","Service")';
             },
             error: function (result) {
