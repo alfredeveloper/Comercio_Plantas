@@ -18,10 +18,10 @@
             Cantidad
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Precio)*@
+            Fecha de Entrega
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Existencias)*@
+            Lugar
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.Activo)*@
@@ -39,13 +39,13 @@
                 @Html.DisplayFor(modelItem => item.ProductoId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
+                @Html.DisplayFor(modelItem => item.Cantidad) 
             </td>
             <td>
-                @*@Html.DisplayFor(modelItem => item.Precio)*@
+                @Html.DisplayFor(modelItem => item.FechaEntrega)
             </td>
             <td>
-                @*@Html.DisplayFor(modelItem => item.Existencias)*@
+                @Html.DisplayFor(modelItem => item.Lugar)
             </td>
             <td>
                 @*@Html.DisplayFor(modelItem => item.Activo)*@

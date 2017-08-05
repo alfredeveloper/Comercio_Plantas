@@ -1,0 +1,333 @@
+﻿@model List<Ornamentals_Project.Models.Producto>
+
+@{
+    ViewBag.Title = "Service";
+}
+
+<!--<h2>mi producto ViewBag.producto</h2>-->
+<div id="content">
+    <div class="container">
+
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index","Home")">Home</a>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("Index","Service")">Servicio</a>
+                </li>
+                <li>@Model.ElementAt(0).Denominacion</li>
+            </ul>
+
+        </div>
+
+        <div class="col-md-3">
+            <!-- *** MENUS AND FILTERS ***
+            _________________________________________________________ -->
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Categorías</h3>
+                </div>
+
+                <div class="panel-body">
+                    <ul class="nav nav-pills nav-stacked category-menu">
+                        <li class="active">
+                            <a href="@Url.Action("Index", "Store")">Servicio<span class="badge pull-right">42</span></a>
+                            <ul>
+                                @foreach (var item in Model)
+                                {
+                                   <li>
+                                        <a href="@Url.Action("Index", "Store")">@item.Denominacion</a>
+                                   </li>
+                                }
+                               
+                            </ul>
+                        </li>
+                        
+                    </ul>
+
+                </div>
+            </div>
+
+
+
+            <!-- *** MENUS AND FILTERS END *** -->
+
+
+        </div>
+
+        <div class="col-md-9">
+
+            <div class="row" id="productMain">
+                @foreach (var item in Model)
+                {
+                    var imagen = @item.ProductoImagen.FirstOrDefault();
+                    string img = imagen == null ? "no_disponible.jpg" : imagen.Imagen;
+                    <div class="col-sm-6">
+
+                        <div id="mainImage">
+                            <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+                        </div>
+                        <br />
+                        <div class="box" id="details">
+                            
+                        <h4>Detalles del servicio</h4>
+                        <blockquote>
+                            <p>
+                                <em>El pago del servicio se realizara en el momento en que se finalice el servicio</em>
+                            </p>
+                        </blockquote>
+
+
+                            <div class="social">
+                                <h4>Comparte con tus amigos</h4>
+                                <p>
+                                    <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+                                    <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
+                                    <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="ribbon sale" id="DivTagAgotado" style="display:none;">
+                            <div class="theribbon" style="background-color:coral; width:100px;">AGOTADO</div>
+                            <div class="ribbon-background" style="background-color:coral"></div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="box">
+                            <h2 class="text-center" style="margin-bottom:0;">@item.Denominacion</h2>
+                            <p class="price" style="margin-top:0">S/.@item.Precio X hora</p>
+
+                            <!--Valores Ocultos-->
+                            <input type="hidden" value="@item.ProductoId" id="ProductoId" name="ProductoId" />
+                            <input type="hidden" value="@item.Denominacion" id="Denominacion" name="Denominacion" />
+                            <input type="hidden" value="@item.Precio" id="Precio" name="Precio" />
+                            <input type="hidden" value="1" id="Cantidad" name="Cantidad" />
+                            <input type="hidden" value="@img" id="Img" name="Img" />
+                            <p class="text-center buttons"> 
+                                @*<a id="BtnAddCarrito" onclick="AgregarCarrito(@item.ProductoId, '@item.Denominacion', '@img', @item.Precio, @item.Existencias)" class="btn btn-primary" data-toggle="modal" data-target="#carrito-modal"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</a>*@
+                                @*<a href="@Url.Action("Index","Basket")" class="btn btn-default"><i class="fa fa-heart"></i> Añadir a lista de deseos</a>*@
+                            </p>
+                            <div class="modal fade" id="servicio-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="BtnInfoCarrito">&times;</button>
+                                            <h4 class="modal-title" id="Login">Informacion</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                           
+                                            <p>Espere Nuestra Llamada para la confirmacion del pedido</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        
+                        @*<div class="row" id="thumbs">
+                            <div class="col-xs-4">
+                                <a href="~/ImgProductos/@img" class="thumb">
+                                    <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+                                </a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="~/ImgProductos/@img" class="thumb">
+                                    <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+                                </a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="~/ImgProductos/@img" class="thumb">
+                                    <img src="~/ImgProductos/@img" alt="" class="img-responsive">
+                                </a>
+                            </div>
+                        </div>*@
+                        <div class="content box">
+                            <h4>Formulario de Pedido</h4>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="firstname">Nombres</label>
+                                        <input type="text" class="form-control" id="firstname" name="Nombres">
+                                        <input type="hidden" value="" name="ClienteId" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="lastname">Apellidos</label>
+                                        <input type="text" class="form-control" id="lastname" name="Apellidos" >
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+
+                            <div class="row">
+
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="state">Departamento</label>
+                                        <select class="form-control" id="departamento" onchange="SetProvincia();"></select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="country">Provincia</label>
+                                        <select class="form-control" id="provincia"></select>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <!-- /.row -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="street">Dirección</label>
+                                        <input type="text" class="form-control" id="street" name="Direccion">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" id="email" name="Correo">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="phone">Teléfono</label>
+                                        <input type="text" class="form-control" id="phone" name="Celular" value="">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="fecha">Fecha de servicio</label>
+                                        <input type="datetime-local" class="form-control" id="fecha" name="Fecha" value="">
+                                    </div>
+                                </div> 
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                                    {
+                                        <button  id="BtnConfServicio" class="btn btn-primary" data-toggle="modal" data-target="#servicio-modal">
+                                            Confirmar Servicio
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button  class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login-modal">
+                                            Confirmar Servicio
+                                        </button>
+                                    }
+                                </div>
+                                <div class="col-md-4"></div>
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+
+
+
+
+            <div class="row same-height-row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="box same-height">
+                        <h3>También te pueden interesar estos servicios</h3>
+                    </div>
+                </div>
+                <div id="servicios-all"></div>
+
+
+            </div>
+
+            
+
+        </div>
+        <!-- /.col-md-9 -->
+    </div>
+    <!-- /.container -->
+</div>
+
+<script src="~/js/jquery-1.11.0.min.js"></script>
+<script src="~/js/ornamentals/ornamentals.ubigeo.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script>
+    var Existencia = $("#ExistenciaU").val();
+    if (Existencia == 0) {
+        //$(DivIdExistencia).css("display", "block");
+
+        $("#DivTagAgotado").css("display", "block");
+        $("#BtnAddCarrito").css("pointerEvents","none");//("pointer-events", "none");
+        $("#BtnAddCarrito").css("cursor", "default"); //css("cursor", "default");
+    }
+
+    function CargarServicios() {
+        $("#servicios-all").load("@Url.Content("~/Service/Servicios")");
+    }
+    CargarServicios();
+
+    $("#BtnConfServicio").click(function () {
+        var ProductoId = $("#ProductoId").val();
+        var Denominacion = $("#Denominacion").val();
+        var Precio = $("#Precio").val();
+        var Cantidad = $("#Cantidad").val();
+        var Imagen = $("#Img").val();
+
+        var Lugar = $("#departamento option:selected").text() + '-' + $("#provincia option:selected").text() + '-' + $("#street").val();
+        var FechaEntrega = $("#fecha").val();
+        var servicio = {
+            "ProductoId": ProductoId,
+            "Denominacion": Denominacion,
+            "Precio": Precio,
+            "Cantidad": Cantidad,
+            "Imagen": Imagen,
+            "Lugar": Lugar,
+            "FechaEntrega": FechaEntrega
+        }
+
+        var list = [];
+        list[0] = servicio;
+        var jsonStr = JSON.stringify(list);
+        console.log(jsonStr);
+        console.log(Lugar);
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            url: '@Url.Action("RealizarPedidoServicio", "Service")',
+            data: jsonStr,
+            success: function () {
+                alert("Servicio Confirmado");
+                window.location = '@Url.Action("Index","Service")';
+            },
+            error: function (result) {
+                alert("ERROR " + result.status + ' ' + result.statusText);
+            }
+        });
+    });
+</script>
+
+

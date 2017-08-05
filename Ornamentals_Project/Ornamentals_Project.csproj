@@ -312,6 +312,9 @@
     <Content Include="Areas\admin\Views\Products\Pedidos.cshtml" />
     <Content Include="Areas\admin\Views\Products\PedidoDetalles.cshtml" />
     <Content Include="Areas\admin\Views\Products\Producto.cshtml" />
+    <Content Include="Views\Service\Service.cshtml" />
+    <Content Include="Views\Service\Servicios.cshtml" />
+    <Content Include="Areas\admin\Views\Products\Clientes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

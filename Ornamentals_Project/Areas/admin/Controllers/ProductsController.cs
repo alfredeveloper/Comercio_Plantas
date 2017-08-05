@@ -203,5 +203,14 @@ namespace Ornamentals_Project.Areas.admin.Controllers
         }
         #endregion
 
+        #region Vista Cliente 
+        public ActionResult Clientes(int id)
+        {
+            var cliente = db.Cliente
+                .Where(x => x.ClienteId.Equals(id))
+                .ToList();
+            return View(cliente);
+        }
+        #endregion
     }
 }

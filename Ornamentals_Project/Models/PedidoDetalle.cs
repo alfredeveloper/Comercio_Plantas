@@ -18,7 +18,9 @@ namespace Ornamentals_Project.Models
         public int PedidoId { get; set; }
         public int ProductoId { get; set; }
         public int Cantidad { get; set; }
-    
+        public string Lugar { get; set; }
+        public string FechaEntrega { get; set; }
+
         public virtual Pedido Pedido { get; set; }
         public virtual Producto Producto { get; set; }
     }

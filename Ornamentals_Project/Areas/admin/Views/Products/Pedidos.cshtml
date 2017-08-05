@@ -55,7 +55,8 @@
                 <td>
                     @Html.ActionLink("Cancelado", "Edit"@*, new { id = item.ProductoId }*@) |
                     @Html.ActionLink("Finalizado", "Details"@*, new { id = item.ProductoId }*@) |
-                    @Html.ActionLink("Detalles", "PedidoDetalles", new { id = item.PedidoId })
+                    @Html.ActionLink("Detalles", "PedidoDetalles", new { id = item.PedidoId }) |
+                    @Html.ActionLink("Ver Cliente", "Clientes", new { id = item.ClienteId })
                      
                 </td>
             </tr>
